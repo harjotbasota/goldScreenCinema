@@ -9,6 +9,9 @@ import Search from '@mui/icons-material/Search';
 import Location from '@mui/icons-material/MyLocation';
 import Profile from '@mui/icons-material/Person';
 import DownArror from '@mui/icons-material/ArrowDropDown';
+import Menu from '@mui/icons-material/Menu';
+import { Button} from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -16,31 +19,30 @@ const Header = () => {
     <div className='headerContainer'>
       <div className='logo'>
         <img src={logoImage}></img>
-        <p> GoldScreen Cinema</p>
+        <p> GS Cinema</p>
       </div>
 
-      <div className='navbar'>
-        <div className='navIcon'> <Home /> </div>
-        <div className='navOption'> Home </div>
-        <div className='navIcon'> <ShowTime /> </div>
-        <div className='navOption'> Show Times </div>
-        <div className='navIcon'> <Cinema /> </div>
-        <div className='navOption'> Cinema </div>
-        <div className='navIcon'> <AboutUs /> </div>
-        <div className='navOption'> About Us </div>
+      <div className='navbar'>        
+        <div className='navOption'> <Link to ='/' > <Home /> <span > Home </span></Link> </div>       
+        <div className='navOption'> <Link to ='/shows' > <ShowTime /> <span >  Show Timings </span> </Link> </div>        
+        <div className='navOption'> <Link to ='/cinemas' > <Cinema /> <span >  Cinemas </span> </Link> </div>
+        <div className='navOption'> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </div>
       </div>
 
       <div className='navRight'>
         <div className='searchIcon'>
-            <Search />
+            <Button> <Search /> </Button>
         </div>
         <div className='Location'>
-            <Location /> <span> Chandigarh</span> <DownArror />
+            <Button> <Location /> <span> Chandigarh</span> <DownArror /> </Button>
         </div>
         <div className='profile'>
-            <Profile />  <span> Profile </span> 
+            <Button> <Profile />  <span> Profile </span>  </Button>
         </div>
       </div>
+      <div className='menu'>
+        <Menu />
+      </div>      
     
     </div>
   )

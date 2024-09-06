@@ -1,3 +1,9 @@
 * {
     margin: 0px;
 }
+
+:root {
+    --golden-color: #FFD700;
+    --grey-color: #E8DFDF;
+    --cream-color: #FFF0D6;
+  }
