@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState , useEffect } from 'react';
 import '../styles/Header.css';
 import logoImage from '../images/logo.png';
 import Home from '@mui/icons-material/Home';
@@ -22,6 +22,7 @@ const Header = () => {
   const [displayProfileIcon, setDisplayProfileIcon] = useState(true);
   const [displayMenuIcon, setDisplayMenuIcon] = useState(true);
   const [displayMenuContent, setDisplayMenuContent] = useState(false);
+  const searchInputRef = useRef(null);
 
   const handleSearchIconClick = () =>{
     setDisplaySearchBox(!displaySearchBox);
@@ -35,6 +36,12 @@ const Header = () => {
     setDisplayMenuIcon(!displayMenuIcon);
     setDisplaySearchIcon(!displaySearchIcon);
   }
+  useEffect(() => {
+    if (displaySearchBox) {
+      searchInputRef.current.focus();
+    }
+  }, [displaySearchBox]);
+
   return (
     <div className='headerContainer'>
       <div className='logo'>
@@ -51,7 +58,7 @@ const Header = () => {
 
       <div className='navRight'>
         <div className='searchIcon' style={displaySearchIcon ? {} : {display:'none'}}>
-        <input className='searchBox' placeholder='Search movies and Cinemas' autoFocus style={{display: displaySearchBox?'flex':'none'}}></input>
+        <input className='searchBox' ref={searchInputRef} placeholder='Search movies and Cinemas'  style={{display: displaySearchBox?'flex':'none'}}></input>
         <Button className='searchButton' onClick={handleSearchIconClick} > <Search /> </Button> 
         </div>
         <div className='Location'style={displayLocationIcon ? {}: {display:'none'}}>
@@ -65,16 +72,16 @@ const Header = () => {
           <div className='menu' onClick={handleDisplayMenuContent} style={displayMenuIcon ? {} : {display: 'none'}}>
             <Button>  <Menu />  </Button>
           </div>  
-          <div className='close' style={displayMenuContent? {display:'block'} : {} } onClick={handleDisplayMenuContent}>
-            <Button>  <Close />  </Button>
-          </div>
           <ul className='menuItems' style={displayMenuContent? {display:'block'} : {} }>
-            <li className='menuItem'> <Link to ='/' > <Home /> <span > Home </span></Link> </li>       
-            <li className='menuItem'> <Link to ='/shows' > <ShowTime /> <span >  Show Timings </span> </Link> </li>        
-            <li className='menuItem'> <Link to ='/cinemas' > <Cinema /> <span >  Cinemas </span> </Link> </li>
-            <li className='menuItem'> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </li>
-            <li className='menuItem'> <Link to ='#' > <Location /> <span >  Location </span></Link> </li>
-            <li className='menuItem'> <Link to ='#' > <Profile /> <span >  Profile </span></Link> </li>
+            <li className='menuItem'> <div className='close' style={displayMenuContent? {display:'flex'} : {} } onClick={handleDisplayMenuContent}>
+            <Button>  <Close />  </Button>
+          </div> </li> 
+            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/' > <Home /> <span > Home </span></Link> </li>       
+            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/shows' > <ShowTime /> <span >  Shows </span> </Link> </li>        
+            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/cinemas' > <Cinema /> <span >  Cinemas </span> </Link> </li>
+            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </li>
+            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='#' > <Location /> <span >  Location </span></Link> </li>
+            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='#' > <Profile /> <span >  Profile </span></Link> </li>
           </ul>    
       </div>
     

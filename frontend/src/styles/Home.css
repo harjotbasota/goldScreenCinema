@@ -1,4 +1,31 @@
 .home{
-    background-color: aliceblue;
-    height: 110vh;
+    height: 92.5vh;
+    width: 100%;
+    margin-top: 7.5vh;
+}
+.slides{
+    height: 45%;
+    border: 5px solid yellow;
+}
+
+
+
+.homeNav{
+    height: 7.5vh;
+    border: 5px solid black;
+}
+
+.nowShowing{
+    height: 120%;
+    border: 5px solid green;
+}
+
+.comingSoon{
+    height: 50%;
+    border: 5px solid blue;
+}
+
+.trailers{
+    height: 50%;
+    border: 5px solid red;
 }
