@@ -1,6 +1,5 @@
 import React, { useRef, useState , useEffect } from 'react';
 import '../styles/Header.css';
-import logoImage from '../images/logo.png';
 import Home from '@mui/icons-material/Home';
 import ShowTime from '@mui/icons-material/EventAvailable';
 import Cinema from '@mui/icons-material/Movie';
@@ -45,7 +44,7 @@ const Header = () => {
   return (
     <div className='headerContainer'>
       <div className='logo'>
-        <img src={logoImage}></img>
+        <img src='/images/logo.png'></img>
         <p> GS Cinema</p>
       </div>
 

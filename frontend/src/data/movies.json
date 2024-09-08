@@ -1,0 +1,113 @@
+{
+    "movies": [
+      {
+        "id": 0,
+        "title": "Movie Title 1",
+        "poster": "/images/moviePosters/FEB200393.jpg",
+        "rating": 8.5,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Action", "Adventure"],
+        "release_date": "2022-01-01"
+      },
+      {
+        "id": 1,
+        "title": "Movie Title 2",
+        "poster": "../images/FEB200393.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 2,
+        "title": "Movie Title 2",
+        "poster": "../images/FEB200393.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 3,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 4,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 5,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 6,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 7,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 8,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 9,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 10,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      },
+      {
+        "id": 11,
+        "title": "Movie Title 2",
+        "poster": "https://example.com/poster2.jpg",
+        "rating": 7.8,
+        "description": "This is a brief description of the movie.",
+        "genre": ["Comedy", "Romance"],
+        "release_date": "2021-06-01"
+      }
+
+    ]
+}

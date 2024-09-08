@@ -1,7 +1,9 @@
 .home{
-    height: 92.5vh;
+    height: 250vh;
     width: 100%;
     margin-top: 7.5vh;
+    display: flex;
+    flex-direction: column;
 }
 .slides{
     height: 45%;
@@ -11,13 +13,26 @@
 
 
 .homeNav{
-    height: 7.5vh;
+    height: 10vh;
     border: 5px solid black;
 }
 
 .nowShowing{
-    height: 120%;
+    height: 150%;
+    width: 100%;
     border: 5px solid green;
+    display: flex;
+    flex-wrap: wrap;
+}
+.nowShowingContainers{
+    border: 2px solid red;
+    height: 33%;
+    width: 24%;
+}
+.nowShowingContainers img{
+    height: 150px;
+    width: 150px;
+    border: 2px solid violet;
 }
 
 .comingSoon{
