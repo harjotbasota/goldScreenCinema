@@ -20,19 +20,51 @@
 .nowShowing{
     height: 150%;
     width: 100%;
-    border: 5px solid green;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--grey-subtle);
 }
 .nowShowingContainers{
-    border: 2px solid red;
-    height: 33%;
-    width: 24%;
+    height: 45%;
+    width: 19%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.3%;
+
 }
 .nowShowingContainers img{
-    height: 150px;
-    width: 150px;
+    height: 66%;
+    width: 70%;
     border: 2px solid violet;
+}
+.movieTitle p{
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.movieRating{
+    font-weight: 200;
+}
+.buttonColumn{
+    max-height: 16%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.buttonColumn Button{
+    margin-right: 20px;
+    color: black;
+    font-weight: 700;
+    border: 1px solid black;
+    max-height: 100%;
+    margin-bottom: 8px;
+}
+.buttonColumn Button:first-child{
+    background-color: var(--golden-color);
+}
+.buttonColumn Button:hover{
+    background-color: var(--grey-color);
 }
 
 .comingSoon{

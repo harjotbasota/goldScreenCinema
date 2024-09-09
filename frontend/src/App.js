@@ -7,11 +7,13 @@ import Cinemas from './components/Cinemas';
 import About from './components/About';
 import Footer from './components/Footer';
 import { MovieProvider } from './context/moviesContext';
+import { ComingSoonMoviesContextProvider } from './context/comingSoonMoviesContext';
 
 function App() {
   return (
     <div className="App">
       <MovieProvider>
+      <ComingSoonMoviesContextProvider>
       <Header />
       <Routes>
         <Route path='/' element={<Home /> } > </Route>
@@ -20,6 +22,7 @@ function App() {
         <Route path='/about' element={<About/> } > </Route>
       </Routes>
       <Footer />
+      </ComingSoonMoviesContextProvider>
       </MovieProvider>
     </div>
   );

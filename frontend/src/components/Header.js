@@ -9,7 +9,7 @@ import Location from '@mui/icons-material/MyLocation';
 import Profile from '@mui/icons-material/Person';
 import DownArror from '@mui/icons-material/ArrowDropDown';
 import Menu from '@mui/icons-material/Menu';
-import Close from '@mui/icons-material/Close'
+import Close from '@mui/icons-material/Close';
 import { Button} from '@mui/material';
 import { Link } from 'react-router-dom';
 
