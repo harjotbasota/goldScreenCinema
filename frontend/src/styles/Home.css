@@ -10,14 +10,12 @@
     border: 5px solid yellow;
 }
 
-
-
 .homeNav{
     height: 10vh;
     border: 5px solid black;
 }
 
-.nowShowing{
+.nowShowing , .comingSoon{
     height: 150%;
     width: 100%;
     display: flex;
@@ -25,7 +23,7 @@
     align-items: center;
     background-color: var(--grey-subtle);
 }
-.nowShowingContainers{
+.nowShowingContainers , .comingSoonContainers{
     height: 45%;
     width: 19%;
     display: flex;
@@ -34,10 +32,9 @@
     gap: 2.3%;
 
 }
-.nowShowingContainers img{
+.nowShowingContainers img, .comingSoonContainers img{
     height: 66%;
     width: 70%;
-    border: 2px solid violet;
 }
 .movieTitle p{
     font-weight: 600;
@@ -65,11 +62,6 @@
 }
 .buttonColumn Button:hover{
     background-color: var(--grey-color);
-}
-
-.comingSoon{
-    height: 50%;
-    border: 5px solid blue;
 }
 
 .trailers{

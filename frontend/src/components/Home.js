@@ -1,25 +1,32 @@
 import '../styles/Home.css';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MovieContext } from '../context/moviesContext';
-import { Button } from '@mui/material';
+import { Button, minor } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
-import { ComingSoonMoviesContext } from '../context/comingSoonMoviesContext';
 
 const Home = () => {
-  const {movies} = useContext(MovieContext);
-  const {comingSoonMovies} = useContext(ComingSoonMoviesContext);
+  const {movies ,comingSoonMovies} = useContext(MovieContext);
+  const [movieContextReady, setMovieContextReady] = useState(false);
+  let randomNumber = Math.floor(Math.random() * movies.length );
+
 
   return (
     <div className='home'>
       <div className='slides'>
-        five slides here
+          { movies.map((mymovie)=> mymovie.id == randomNumber ? <div className='frontslidwe' style={{backgroundImage:mymovie.poster}}> {mymovie.id} </div> : null)}
       </div>
+
+
       <div className='homeNav'>
         nav bar here
       </div>
+
+
       <div className='sectionHeading'>
         <h1>Now Showing</h1>
       </div>
+
+
       <div className='nowShowing'>
         { movies.map((movie)=> (
           <div key={movie.id} className='nowShowingContainers'> 
@@ -37,10 +44,30 @@ const Home = () => {
           </div>
         )) }
       </div>
-      <div className='comingSoon'>
-        Coming Soon movies
-        {comingSoonMovies}
+
+      <div className='sectionHeading'>
+        <h1>Coming Soon</h1>
       </div>
+
+
+      <div className='comingSoon'>
+          {comingSoonMovies.map((comingSoonMovie)=>(
+            <div className='comingSoonContainers' key={comingSoonMovie.id}> 
+                  <img src={comingSoonMovie.poster} alt={comingSoonMovie.title} />
+                  <div className='movieTitle'>
+                    <p>{comingSoonMovie.title}</p>
+                  </div>
+                  <div className='movieRating'>
+                    <p>Release Date: {comingSoonMovie.release_date} </p>
+                  </div>
+                  <div className='buttonColumn'>
+                    <Button> View Details </Button>  
+            </div>                  
+            </div>
+          ))}
+      </div>
+
+
       <div className='trailers'>
         trailers
       </div>
