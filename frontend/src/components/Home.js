@@ -6,19 +6,35 @@ import InfoIcon from '@mui/icons-material/Info';
 
 const Home = () => {
   const {movies ,comingSoonMovies} = useContext(MovieContext);
-  const [movieContextReady, setMovieContextReady] = useState(false);
-  let randomNumber = Math.floor(Math.random() * movies.length );
+  const [randomNumber,setRandomNumber] = useState(0);
+  setTimeout( ()=> {
+    setRandomNumber(Math.floor(Math.random() * movies.length));
+  },5000)
 
 
   return (
     <div className='home'>
-      <div className='slides'>
-          { movies.map((mymovie)=> mymovie.id == randomNumber ? <div className='frontslidwe' style={{backgroundImage:mymovie.poster}}> {mymovie.id} </div> : null)}
-      </div>
-
+          { movies.map((mymovie)=> mymovie.id == randomNumber ? 
+          <div className='slide' style={{ background: `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(${mymovie.poster})` , backgroundRepeat:'no-repeat' , backgroundSize:'cover' }}>
+            <div className='leftSideOfSlide'>
+              <div className='posterTitle'> <p> {mymovie.title} </p></div>
+              <div> Description: {mymovie.description} </div>
+              <div> Rating: {mymovie.rating} </div>
+              <div> Genre: {mymovie.genre}</div>
+              <div className='buttonColumn'>
+              <Button>Book Ticket</Button>
+            </div>
+            </div>
+            <div className='rightSideOfSlide'>
+              <img src={mymovie.poster} alt={mymovie.title} />
+            </div>
+            
+          </div>: null)}
 
       <div className='homeNav'>
-        nav bar here
+        <a href='#nowshowingsection'>Now Showing</a>
+        <a href='#comingsoonsection'>Coming Soon</a>
+        <a href='#trailerssection'>Trailers</a>
       </div>
 
 
@@ -27,7 +43,7 @@ const Home = () => {
       </div>
 
 
-      <div className='nowShowing'>
+      <div className='nowShowing' id='nowshowingsection'>
         { movies.map((movie)=> (
           <div key={movie.id} className='nowShowingContainers'> 
             <img src={movie.poster} alt={movie.title} />
@@ -50,7 +66,7 @@ const Home = () => {
       </div>
 
 
-      <div className='comingSoon'>
+      <div className='comingSoon' id='comingsoonsection'>
           {comingSoonMovies.map((comingSoonMovie)=>(
             <div className='comingSoonContainers' key={comingSoonMovie.id}> 
                   <img src={comingSoonMovie.poster} alt={comingSoonMovie.title} />
@@ -68,7 +84,7 @@ const Home = () => {
       </div>
 
 
-      <div className='trailers'>
+      <div className='trailers' id='trailerssection'>
         trailers
       </div>
     </div>
