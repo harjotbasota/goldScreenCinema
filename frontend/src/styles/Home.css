@@ -1,5 +1,5 @@
 .home{
-    height: 400vh;
+    height: 377vh;
     width: 100%;
     margin-top: 7.5vh;
     display: flex;
@@ -7,7 +7,7 @@
     background-color: var(--grey-subtle);
 }
 .slide {
-    min-height: 50vh;
+    height: 50vh;
     width: 100%;
     color: white;
     display: flex;
@@ -40,22 +40,58 @@
 }
 
 .homeNav{
-    height: 10vh;
+    height: 7vh;
     background-color: var(--cream-color);
     align-items: center;
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    top: 7vh;
+    z-index: 5;
+    border-bottom: 2px solid red;
 }
 .homeNav a{
     color: black;
     text-decoration: none;
     margin-left: 5vw;
+    font-size: larger;
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid var(--grey-color);
+    font-weight: bold;
+    box-shadow: 5px;
+}
+.homeNav a:hover{
+    background-color: var(--golden-color);
+}
+.sectionHeading {
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: var(--grey-subtle);
+    padding-top: 9px;
+}
+.sectionHeading:nth-child(3) {
+    background-color: var(--grey-color);
+}
+.sectionHeading:nth-child(7){
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-left: 5%;
+    background-color: var(--grey-color);
 }
 
 .nowShowing , .comingSoon{
-    height: 160vh;
-    width: 100%;
+    height: 140vh;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.nowShowing{
+    background-color: var(--grey-color);
 }
 .nowShowingContainers , .comingSoonContainers{
     height: 48%;
@@ -63,12 +99,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.3%;
+    gap: 2.5%;
+    justify-content: center;
 
 }
 .nowShowingContainers img, .comingSoonContainers img{
     height: 66%;
-    width: 70%;
+    width: 85%;
 }
 .movieTitle p{
     font-weight: 600;
@@ -89,7 +126,6 @@
     font-weight: 700;
     border: 1px solid black;
     max-height: 100%;
-    margin-bottom: 8px;
 }
 .buttonColumn Button:first-child{
     background-color: var(--golden-color);
@@ -99,6 +135,47 @@
 }
 
 .trailers{
-    height: 50vh;
-    border: 5px solid red;
+    height: 40vh;
+    width: 100%;
+    background-color: var(--grey-color);
+    display: flex;
+    flex-direction: row;
+}
+.trailerContainer{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.trailerVideo{
+    height: 45%;
+    width: 70%;
+    display: flex;
+    background-color: black;
+}
+.trailerVideo a{
+    justify-self: center;
+    align-self: center;
+    margin-left: 30%;
+}
+.trailerVideo a img{
+    height: 50%;
+    width: 50%;
+}
+.trailerDetails{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.trailerDetails ul li{
+    display: inline;
+    color: rgba(0, 0, 0, 0.7);
+}
+.trailerDetails ul li::before{
+    content: "\25A0";
 }

@@ -20,7 +20,7 @@
       },
       {
         "id": 2,
-        "title": "Movie Title 2",
+        "title": "Movie Title 3",
         "poster": "/images/moviePosters/avatar.jpeg",
         "rating": 7.8,
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
@@ -29,7 +29,7 @@
       },
       {
         "id": 3,
-        "title": "Movie Title 2",
+        "title": "Movie Title 4",
         "poster": "/images/moviePosters/behance.jpg",
         "rating": 7.8,
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
@@ -38,7 +38,7 @@
       },
       {
         "id": 4,
-        "title": "Movie Title 2",
+        "title": "Movie Title 5",
         "poster": "/images/moviePosters/dark.jpeg",
         "rating": 7.8,
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
@@ -47,7 +47,7 @@
       },
       {
         "id": 5,
-        "title": "Movie Title 2",
+        "title": "Movie Title 6",
         "poster": "/images/moviePosters/halloween.jpeg",
         "rating": 7.8,
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
@@ -56,7 +56,7 @@
       },
       {
         "id": 6,
-        "title": "Movie Title 2",
+        "title": "Movie Title 7",
         "poster": "/images/moviePosters/johnWick2.jpeg",
         "rating": 7.8,
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
@@ -65,7 +65,7 @@
       },
       {
         "id": 7,
-        "title": "Movie Title 2",
+        "title": "Movie Title 8",
         "poster": "/images/moviePosters/southLandTales.jpeg",
         "rating": 7.8,
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",

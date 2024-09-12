@@ -36,6 +36,7 @@ const Home = () => {
         <a href='#comingsoonsection'>Coming Soon</a>
         <a href='#trailerssection'>Trailers</a>
       </div>
+     
 
 
       <div className='sectionHeading'>
@@ -82,10 +83,36 @@ const Home = () => {
             </div>
           ))}
       </div>
-
+      
+      <div className='sectionHeading'>
+          <h1>Trailers</h1>
+      </div>
 
       <div className='trailers' id='trailerssection'>
-        trailers
+        <div className='trailerContainer'>
+        <div className='trailerVideo' style={{backgroundImage:`url('/images/moviePosters/211.jpeg')`, backgroundSize:'cover'}}> <a href='https://youtu.be/SCLjS-owEig' target='blank'> <img src='/images/playButton.png'></img> </a> </div>
+          <div className='trailerDetails'> 
+          <h1> 211</h1>
+          <ul> <li> 2 hr 3 mins </li> <li> English</li> <li> Action,Drama </li></ul></div>
+        </div>
+        <div className='trailerContainer'>
+        <div className='trailerVideo' style={{backgroundImage:`url('/images/moviePosters/avatar.jpeg')`, backgroundSize:'cover'}}> <a href='https://youtu.be/5PSNL1qE6VY' target='blank'> <img src='/images/playButton.png'></img> </a> </div>
+          <div className='trailerDetails'> 
+          <h1> Avatar</h1>
+          <ul> <li> 2 hr 3 mins </li> <li> English</li> <li> Action,Drama </li></ul></div>
+        </div>
+        <div className='trailerContainer'>
+        <div className='trailerVideo' style={{backgroundImage:`url('/images/moviePosters/dark.jpeg')`, backgroundSize:'cover'}}> <a href='https://youtu.be/ESEUoa-mz2c' target='blank'> <img src='/images/playButton.png'></img> </a> </div>
+          <div className='trailerDetails'> 
+          <h1> Dark </h1>
+          <ul> <li> 2 hr 3 mins </li> <li> English</li> <li> Action,Drama </li></ul></div>
+        </div>
+        <div className='trailerContainer'>
+        <div className='trailerVideo' style={{backgroundImage:`url('/images/moviePosters/halloween.jpeg')`, backgroundSize:'cover'}}> <a href='https://youtu.be/ek1ePFp-nBI' target='blank'> <img src='/images/playButton.png'></img> </a> </div>
+          <div className='trailerDetails'> 
+          <h1> Halloween </h1>
+          <ul> <li> 2 hr 3 mins </li> <li> English</li> <li> Action,Drama </li></ul></div>
+        </div>
       </div>
     </div>
   )

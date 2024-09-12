@@ -1,77 +1,77 @@
 {
-    "comingSoonMovies": [
-      {
-        "id": 0,
-        "title": "Movie Title 1",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 8.5,
-        "description": "This is a brief description of the movie.",
-        "genre": ["Action", "Adventure"],
-        "release_date": "2022-01-01"
-      },
-      {
-        "id": 1,
-        "title": "Movie Title 2",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 7.8,
-        "description": "This is a brief description of the movie.",
-        "genre": ["Comedy", "Romance"],
-        "release_date": "2021-06-01"
-      },
-      {
-        "id": 2,
-        "title": "Movie Title 2",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 7.8,
-        "description": "This is a brief description of the movie.",
-        "genre": ["Comedy", "Romance"],
-        "release_date": "2021-06-01"
-      },
-      {
-        "id": 3,
-        "title": "Movie Title 2",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 7.8,
-        "description": "This is a brief description of the movie.",
-        "genre": ["Comedy", "Romance"],
-        "release_date": "2021-06-01"
-      },
-      {
-        "id": 4,
-        "title": "Movie Title 2",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 7.8,
-        "description": "This is a brief description of the movie.",
-        "genre": ["Comedy", "Romance"],
-        "release_date": "2021-06-01"
-      },
-      {
-        "id": 5,
-        "title": "Movie Title 2",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 7.8,
-        "description": "This is a brief description of the movie.",
-        "genre": ["Comedy", "Romance"],
-        "release_date": "2021-06-01"
-      },
-      {
-        "id": 6,
-        "title": "Movie Title 2",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 7.8,
-        "description": "This is a brief description of the movie.",
-        "genre": ["Comedy", "Romance"],
-        "release_date": "2021-06-01"
-      },
-      {
-        "id": 7,
-        "title": "Movie Title 2",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 7.8,
-        "description": "This is a brief description of the movie.",
-        "genre": ["Comedy", "Romance"],
-        "release_date": "2021-06-01"
-      }
+  "comingSoonMovies": [
+    {
+      "id": 0,
+      "title": "Movie Title 1",
+      "poster": "/images/moviePosters/FEB200393.jpg",
+      "rating": 8.5,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "genre": "Action, Adventure",
+      "release_date": "2022-01-01"
+    },
+    {
+      "id": 1,
+      "title": "Movie Title 2",
+      "poster": "/images/moviePosters/211.jpeg",
+      "rating": 7.8,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "genre": "Action, Adventure",
+      "release_date": "2021-06-01"
+    },
+    {
+      "id": 2,
+      "title": "Movie Title 3",
+      "poster": "/images/moviePosters/avatar.jpeg",
+      "rating": 7.8,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "genre": "Action, Adventure",
+      "release_date": "2021-06-01"
+    },
+    {
+      "id": 3,
+      "title": "Movie Title 4",
+      "poster": "/images/moviePosters/behance.jpg",
+      "rating": 7.8,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "genre": "Action, Adventure",
+      "release_date": "2021-06-01"
+    },
+    {
+      "id": 4,
+      "title": "Movie Title 5",
+      "poster": "/images/moviePosters/dark.jpeg",
+      "rating": 7.8,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "genre": "Action, Adventure",
+      "release_date": "2021-06-01"
+    },
+    {
+      "id": 5,
+      "title": "Movie Title 2",
+      "poster": "/images/moviePosters/halloween.jpeg",
+      "rating": 7.8,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "genre": "Action, Adventure",
+      "release_date": "2021-06-01"
+    },
+    {
+      "id": 6,
+      "title": "Movie Title 2",
+      "poster": "/images/moviePosters/johnWick2.jpeg",
+      "rating": 7.8,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "genre": "Action, Adventure",
+      "release_date": "2021-06-01"
+    },
+    {
+      "id": 7,
+      "title": "Movie Title 2",
+      "poster": "/images/moviePosters/southLandTales.jpeg",
+      "rating": 7.8,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
+      "genre": "Action, Adventure",
+      "release_date": "2021-06-01"
+    }
 
-    ]
+  ]
 }
