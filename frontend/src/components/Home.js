@@ -9,7 +9,7 @@ const Home = () => {
   const [randomNumber,setRandomNumber] = useState(0);
   setTimeout( ()=> {
     setRandomNumber(Math.floor(Math.random() * movies.length));
-  },5000)
+  },500000)
 
 
   return (
@@ -18,9 +18,9 @@ const Home = () => {
           <div className='slide' style={{ background: `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(${mymovie.poster})` , backgroundRepeat:'no-repeat' , backgroundSize:'cover' }}>
             <div className='leftSideOfSlide'>
               <div className='posterTitle'> <p> {mymovie.title} </p></div>
-              <div> Description: {mymovie.description} </div>
-              <div> Rating: {mymovie.rating} </div>
-              <div> Genre: {mymovie.genre}</div>
+              <div className='posterDescription'> <p>Description: {mymovie.description}</p> </div>
+              <div className='posterDescription'> <p>Rating: {mymovie.rating} </p></div>
+              <div className='posterDescription'> <p> Genre: {mymovie.genre} </p></div>
               <div className='buttonColumn'>
               <Button>Book Ticket</Button>
             </div>

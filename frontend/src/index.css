@@ -7,4 +7,11 @@
     --grey-color: #E8DFDF;
     --cream-color: #FFF0D6;
     --grey-subtle: #f8f9fa;
+    --xx-small: 9px;
+    --x-small: 10px;
+    --small: 12px;
+    --medium: 16px;
+    --large: 18px;
+    --x-large: 24px;
+    --xx-large: 36px;
   }

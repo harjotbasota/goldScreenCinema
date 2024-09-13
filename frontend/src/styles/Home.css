@@ -36,7 +36,7 @@
     height: 80%;
     width: 40%;
     border: 3px solid greenyellow;
-    margin-top: 5%;
+    margin-top: 6%;
 }
 
 .homeNav{
@@ -178,4 +178,64 @@
 }
 .trailerDetails ul li::before{
     content: "\25A0";
+}
+
+@media only screen and (max-width:1024px){
+  .leftSideOfSlide{
+    width: 40%;
+  }  
+  .rightSideOfSlide{
+    width: 55%;
+  }
+  .rightSideOfSlide img{
+    width: 50%;
+    margin-left: 15%;
+    min-height: 50%;
+    max-height: 65%;
+    margin-top: 15%;
+  }
+}
+
+@media only screen and (max-width: 770px){
+
+    .posterTitle p{
+        font-size: var(--xx-large);
+    }
+    .posterDescription p{
+        font-size: var(--medium);
+    }
+    .rightSideOfSlide img{
+        height: 65%;
+        width: 60%;
+        margin-top: 15%;
+    }
+    .buttonColumn Button{
+        margin-right: 20px;
+        font-weight: 600;
+        font-size: var(--medium);
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .slide{
+        height: 40vh;
+    }
+    .rightSideOfSlide{
+        display: none;
+    }
+    .leftSideOfSlide{
+        width: 90%;
+    }
+    .posterTitle p{
+        font-size: var(--x-large);
+    }
+    .posterDescription p{
+        font-size: var(--small);
+    }
+    .buttonColumn Button{
+        font-size: var(--small);
+    }
+    .homeNav{
+        display: None;
+    }
 }
