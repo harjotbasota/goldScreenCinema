@@ -1,0 +1,25 @@
+{
+    "cinemas": [
+      {
+        "id": 1,
+        "name": "AMC Empire 25",
+        "location": "New York, NY",
+        "screens": 25,
+        "seats": 5000
+      },
+      {
+        "id": 2,
+        "name": "Regal E-Walk Stadium 13 & RPX",
+        "location": "New York, NY",
+        "screens": 13,
+        "seats": 3000
+      },
+      {
+        "id": 3,
+        "name": "Cinemark 32",
+        "location": "Los Angeles, CA",
+        "screens": 32,
+        "seats": 6000
+      }
+    ]
+  }

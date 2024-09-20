@@ -1,5 +1,5 @@
 .home{
-    height: 377vh;
+    height: auto;
     width: 100%;
     margin-top: 7.5vh;
     display: flex;
@@ -101,7 +101,6 @@
     align-items: center;
     gap: 2.5%;
     justify-content: center;
-
 }
 .nowShowingContainers img, .comingSoonContainers img{
     height: 66%;
@@ -126,6 +125,8 @@
     font-weight: 700;
     border: 1px solid black;
     max-height: 100%;
+    flex-grow: 1;
+    margin-bottom: 6px;
 }
 .buttonColumn Button:first-child{
     background-color: var(--golden-color);
@@ -140,6 +141,7 @@
     background-color: var(--grey-color);
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .trailerContainer{
     height: 100%;
@@ -194,6 +196,31 @@
     max-height: 65%;
     margin-top: 15%;
   }
+  .sectionHeading {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .nowShowing , .comingSoon{
+    height: 110vh;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .nowShowingContainers , .comingSoonContainers{
+    height: 50%;
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+    justify-content: center;
+   }
+   .nowShowingContainers img, .comingSoonContainers img{
+    height: 60%;
+    width: 90%;
+   }
+
+
 }
 
 @media only screen and (max-width: 770px){
@@ -207,6 +234,7 @@
     .rightSideOfSlide img{
         height: 65%;
         width: 60%;
+        min-width: none;
         margin-top: 15%;
     }
     .buttonColumn Button{
@@ -214,9 +242,33 @@
         font-weight: 600;
         font-size: var(--medium);
     }
+    .nowShowing , .comingSoon{
+        height: 160vh;
+        width: 100%;
+    }
+    .nowShowingContainers , .comingSoonContainers{
+        max-height: 33%;
+        width: 33%;
+        min-height: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2%;
+        justify-content: center;
+    }
+    .trailers{
+        height: 80vh;
+    }
+    .trailerContainer{
+        width: 50%;
+        height: 50%;
+    }
+    .trailerVideo{
+        height: 80%;
+    }
 }
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 520px){
     .slide{
         height: 40vh;
     }
@@ -225,6 +277,8 @@
     }
     .leftSideOfSlide{
         width: 90%;
+        justify-content: center;
+        align-items: center;
     }
     .posterTitle p{
         font-size: var(--x-large);
@@ -232,10 +286,27 @@
     .posterDescription p{
         font-size: var(--small);
     }
+    .buttonColumn{
+        width: 90%;
+    }
     .buttonColumn Button{
         font-size: var(--small);
+        width: 80%;
     }
     .homeNav{
         display: None;
     }
+    .nowShowing {
+        height: 200vh;
+        width: 100%;
+    }
+    .comingSoon{
+        height: 175vh;
+        width: 100%;
+    }
+    .nowShowingContainers , .comingSoonContainers{
+        height: 24%;
+        width: 50%;
+    }
+
 }

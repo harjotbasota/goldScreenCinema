@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import '../styles/Cinemas.css';
 
 const Cinemas = () => {
   return (
-    <div>
-      hello from Cinema
+    <div className='cinemas'>
+
     </div>
   )
 }
