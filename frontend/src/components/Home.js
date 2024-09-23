@@ -9,7 +9,7 @@ const Home = () => {
   const [randomNumber,setRandomNumber] = useState(0);
   setTimeout( ()=> {
     setRandomNumber(Math.floor(Math.random() * movies.length));
-  },500000)
+  },5000)
 
 
   return (

@@ -4,10 +4,11 @@
     width: 100vw;
     flex-direction: row;
     position: fixed;
-    background-color: white;
+    background-color: #fbf8f8;
     top: 0;
     left: 0;
     z-index: 1000;
+    border-bottom: 2px solid black;
 }
 .logo{
     height: 100%;
@@ -28,7 +29,7 @@
     font-style: italic;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: var(--golden-color);
-    
+    text-emphasis: bolder;
 }
 
 .navbar{
