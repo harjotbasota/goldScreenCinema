@@ -30,6 +30,7 @@ const Cinemas = () => {
                       })
                   })}
               </div>
+              <h5> ... and more</h5>
             </div>
           </div>
         ))

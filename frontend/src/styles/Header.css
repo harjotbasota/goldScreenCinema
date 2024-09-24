@@ -55,7 +55,7 @@
     color: black;
 }
 .navOption a:hover{
-    background-color: var(--grey-color);
+    background-color: var(--golden-color);
     padding: 8px 8px 8px 8px;
     border-radius: 20px;
 }

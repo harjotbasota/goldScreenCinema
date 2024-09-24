@@ -11,7 +11,12 @@
     height: 7vh;
     width: 100%;
     background-color: var(--cream-color);
-
+    font-size: xxx-large;
+    text-transform: uppercase;
+    padding-left: 5%;
+    position: sticky;
+    top: 7.5vh;
+    z-index: 5;
 }
 .cinemaContainer{
     margin-top: 20px;
@@ -39,17 +44,20 @@
     flex-direction: column;
 }
 .moviePosters{
-    height: 80%;
+    height: 70%;
     width: 100%;
     display: flex;
     flex-direction: row;
     overflow: hidden;
     gap: 10px;
-    margin-top: 2%;
+    margin-top: 5%;
 }
-.moviePoster img{
+.moviePosters img{
     height: 100%;
     width: 25%;
+}
+.containerRight h5{
+    margin-left: auto;
 }
 .containerLeft img{
     height: 75%;
@@ -64,4 +72,47 @@
 .containerMiddle p svg{
     font-size: large;
     vertical-align: bottom;
+}
+@media only screen and (max-width:1024px){
+
+}
+@media only screen and (max-width: 770px){
+    .cinemaContainer{
+        height: 60vh;
+        display: flex;
+        width: 90%;
+        flex-wrap: wrap;
+    }
+    .containerLeft{
+        width: 60%;
+        height: 48%;
+    }
+    .containerMiddle{
+        width: 40%;
+        height: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .containerRight{
+        width: 95%;
+        height: 50%;
+    }
+    .containerRight h3{
+        padding-left: 15px;
+    }
+    .moviePosters{
+        height: 80%;
+        width: 100%;
+        gap: 10px;
+        margin-top: 2%;
+        margin-left: 3%;
+        overflow: hidden;
+    }
+    .moviePosters img{
+        height: 100%;
+    }
+}
+@media only screen and (max-width: 520px){
+    
 }
