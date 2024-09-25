@@ -11,18 +11,21 @@
     height: 7vh;
     width: 100%;
     background-color: var(--cream-color);
-    font-size: xxx-large;
-    text-transform: uppercase;
-    padding-left: 5%;
+    font-size: xx-large;
     position: sticky;
     top: 7.5vh;
     z-index: 5;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+.cinemasTitle p{
+    margin-left: 10%;
 }
 .cinemaContainer{
     margin-top: 20px;
     height: 30vh;
-    border: 3px solid var(--grey-color);
-    border-bottom: 6px solid var(--grey-color);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.553);
     display: flex;
     width: 90%;
     margin-bottom: 1%;
@@ -50,7 +53,7 @@
     flex-direction: row;
     overflow: hidden;
     gap: 10px;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .moviePosters img{
     height: 100%;

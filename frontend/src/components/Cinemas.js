@@ -10,7 +10,7 @@ const Cinemas = () => {
 
   return (
     <div className='cinemas'>
-      <div className='cinemasTitle'> <p> Cinemas</p></div>
+      <div className='cinemasTitle'> <p> Cinemas</p> </div>
       {
         cinemas.map((cinema)=>(
           <div key={cinema.id} className='cinemaContainer'> 
@@ -25,7 +25,7 @@ const Cinemas = () => {
               <h3> Now Showing</h3>
               <div className='moviePosters'>
                 {movies.map((movie)=>{
-                      return movie.cinemasId.map((currid)=>{
+                      return Object.keys(movie.cinema_shows).map((currid)=>{
                         return currid == cinema.id ? <img  src={movie.poster} /> : null
                       })
                   })}

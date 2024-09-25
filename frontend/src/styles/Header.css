@@ -54,10 +54,13 @@
     text-decoration: none;
     color: black;
 }
-.navOption a:hover{
+.activePage{
     background-color: var(--golden-color);
     padding: 8px 8px 8px 8px;
     border-radius: 20px;
+}
+.navOption a:hover{
+    opacity: 0.66;
 }
 
 .navRight{

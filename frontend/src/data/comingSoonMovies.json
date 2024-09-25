@@ -2,76 +2,75 @@
   "comingSoonMovies": [
     {
       "id": 0,
-      "title": "Movie Title 1",
-      "poster": "/images/moviePosters/FEB200393.jpg",
-      "rating": 8.5,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-      "genre": "Action, Adventure",
-      "release_date": "2022-01-01"
+      "title": "The Matrix Resurrections",
+      "poster": "/images/moviePosters/matrix_resurrections.jpg",
+      "cast": ["Keanu Reeves", "Carrie-Anne Moss", "Jada Pinkett Smith"],
+      "description": "The Matrix Resurrections is a 2021 science fiction action film produced, written, and directed by Lana Wachowski.",
+      "genre": "Science Fiction, Action",
+      "release_date": "2021-12-22"
     },
     {
       "id": 1,
-      "title": "Movie Title 2",
-      "poster": "/images/moviePosters/211.jpeg",
-      "rating": 7.8,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-      "genre": "Action, Adventure",
-      "release_date": "2021-06-01"
+      "title": "Spider-Man: No Way Home",
+      "poster": "/images/moviePosters/spiderman_no_way_home.jpeg",
+      "cast": ["Tom Holland", "Zendaya", "Benedict Cumberbatch"],
+      "description": "Spider-Man: No Way Home is a 2021 superhero film directed by Jon Watts and produced by Marvel Studios.",
+      "genre": "Superhero, Action",
+      "release_date": "2021-12-17"
     },
     {
       "id": 2,
-      "title": "Movie Title 3",
-      "poster": "/images/moviePosters/avatar.jpeg",
-      "rating": 7.8,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-      "genre": "Action, Adventure",
-      "release_date": "2021-06-01"
+      "title": "The King's Man",
+      "poster": "/images/moviePosters/the_kings_man.jpg",
+      "cast": ["Ralph Fiennes", "Gemma Arterton", "Rhys Ifans"],
+      "description": "The King's Man is a 2021 spy action comedy film directed by Matthew Vaughn and produced by 20th Century Studios.",
+      "genre": "Action, Comedy",
+      "release_date": "2021-12-22"
     },
     {
       "id": 3,
-      "title": "Movie Title 4",
-      "poster": "/images/moviePosters/behance.jpg",
-      "rating": 7.8,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-      "genre": "Action, Adventure",
-      "release_date": "2021-06-01"
+      "title": "Ghostbusters: Afterlife",
+      "poster": "/images/moviePosters/ghostbusters_afterlife.jpg",
+      "cast": ["Carrie Coon", "Paul Rudd", "Mckenna Grace"],
+      "description": "Ghostbusters: Afterlife is a 2021 supernatural comedy film directed by Jason Reitman and produced by Sony Pictures.",
+      "genre": "Supernatural, Comedy",
+      "release_date": "2021-11-19"
     },
     {
       "id": 4,
-      "title": "Movie Title 5",
-      "poster": "/images/moviePosters/dark.jpeg",
-      "rating": 7.8,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-      "genre": "Action, Adventure",
-      "release_date": "2021-06-01"
+      "title": "Eternals",
+      "poster": "/images/moviePosters/eternals.jpeg",
+      "cast": ["Gemma Chan", "Richard Madden", "Angelina Jolie"],
+      "description": "Eternals is a 2021 superhero film directed by Chloé Zhao and produced by Marvel Studios.",
+      "genre": "Superhero, Action",
+      "release_date": "2021-11-05"
     },
     {
       "id": 5,
-      "title": "Movie Title 2",
-      "poster": "/images/moviePosters/halloween.jpeg",
-      "rating": 7.8,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-      "genre": "Action, Adventure",
-      "release_date": "2021-06-01"
+      "title": "Shang-Chi and the Legend of the Ten Rings",
+      "poster": "/images/moviePosters/shang_chi.jpg",
+      "cast": ["Simu Liu", "Awkwafina", "Tony Leung"],
+      "description": "Shang-Chi and the Legend of the Ten Rings is a 2021 superhero film directed by Destin Daniel Cretton and produced by Marvel Studios.",
+      "genre": "Superhero, Action",
+      "release_date": "2021-09-03"
     },
     {
       "id": 6,
-      "title": "Movie Title 2",
-      "poster": "/images/moviePosters/johnWick2.jpeg",
-      "rating": 7.8,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-      "genre": "Action, Adventure",
-      "release_date": "2021-06-01"
+      "title": "Venom:Let There Be Carnage",
+      "poster": "/images/moviePosters/venom_let_there_be_carnage.jpeg",
+      "cast": ["Tom Hardy", "Michelle Williams", "Woody Harrelson"],
+      "description": "Venom: Let There Be Carnage is a 2021 superhero film directed by Andy Serkis and produced by Sony Pictures.",
+      "genre": "Superhero, Action",
+      "release_date": "2021-10-01"
     },
     {
       "id": 7,
-      "title": "Movie Title 2",
-      "poster": "/images/moviePosters/southLandTales.jpeg",
-      "rating": 7.8,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-      "genre": "Action, Adventure",
-      "release_date": "2021-06-01"
+      "title": "Black Widow",
+      "poster": "/images/moviePosters/black_widow.jpeg",
+      "cast": ["Scarlett Johansson", "Florence Pugh", "David Harbour"],
+      "description": "Black Widow is a 2021 superhero film directed by Cate Shortland and produced by Marvel Studios.",
+      "genre": "Superhero, Action",
+      "release_date": "2021-07-09"
     }
-
   ]
 }

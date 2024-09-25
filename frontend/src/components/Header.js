@@ -21,6 +21,7 @@ const Header = () => {
   const [displayProfileIcon, setDisplayProfileIcon] = useState(true);
   const [displayMenuIcon, setDisplayMenuIcon] = useState(true);
   const [displayMenuContent, setDisplayMenuContent] = useState(false);
+  const [currentPageIdx, setCurrentPageIdx] = useState(0);
   const searchInputRef = useRef(null);
 
   const handleSearchIconClick = () =>{
@@ -49,10 +50,10 @@ const Header = () => {
       </div>
 
       <div className='navbar'>        
-        <div className='navOption'> <Link to ='/' > <Home /> <span > Home </span></Link> </div>       
-        <div className='navOption'> <Link to ='/shows' > <ShowTime /> <span >  Show Timings </span> </Link> </div>        
-        <div className='navOption'> <Link to ='/cinemas' > <Cinema /> <span >  Cinemas </span> </Link> </div>
-        <div className='navOption'> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </div>
+        <div className={`navOption ${currentPageIdx == 0 ? 'activePage' : ''}`} onClick={()=>setCurrentPageIdx(0)}> <Link to ='/' > <Home /> <span > Home </span></Link> </div>       
+        <div className={`navOption ${currentPageIdx == 1 ? 'activePage' : ''}`} onClick={()=>setCurrentPageIdx(1)}> <Link to ='/shows' > <ShowTime /> <span >  Show Timings </span> </Link> </div>        
+        <div className={`navOption ${currentPageIdx == 2 ? 'activePage' : ''}`} onClick={()=>setCurrentPageIdx(2)}> <Link to ='/cinemas' > <Cinema /> <span >  Cinemas </span> </Link> </div>
+        <div className={`navOption ${currentPageIdx == 3 ? 'activePage' : ''}`} onClick={()=>setCurrentPageIdx(3)}> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </div>
       </div>
 
       <div className='navRight'>

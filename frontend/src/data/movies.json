@@ -2,83 +2,120 @@
     "movies": [
       {
         "id": 0,
-        "title": "Movie Title 1",
-        "poster": "/images/moviePosters/FEB200393.jpg",
-        "rating": 8.5,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-        "genre": "Action, Adventure",
-        "release_date": "2022-01-01",
-        "cinemasId": [2,3]
+        "title": "Joker",
+        "poster": "/images/moviePosters/joker.jpg",
+        "rating": 8.6,
+        "description": "In Gotham City, a struggling stand-up comedian, Arthur Fleck, is driven insane and becomes the Joker.",
+        "genre": "Crime, Drama, Thriller",
+        "release_date": "2019-10-04",
+        "cinemasId": [2,3],
+        "ticketPrice": 12,
+        "cinema_shows": {
+          "1": ["10:00 AM", "1:00 PM", "4:00 PM"],
+          "2": ["9:30 AM"],
+          "3": ["6:00 PM", "9:00 PM"],
+          "4": ["10:30 AM", "1:30 PM"]
+        }
       },
       {
         "id": 1,
-        "title": "Movie Title 2",
+        "title": "211",
         "poster": "/images/moviePosters/211.jpeg",
-        "rating": 7.8,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-        "genre": "Action, Adventure",
-        "release_date": "2021-06-01",
-        "cinemasId": [3,2,1]
+        "rating": 5.6,
+        "description": "Bank heist movie centered around a newly-minted police officer who will need to put his skills to the test.",
+        "genre": "Action, Thriller, Crime",
+        "release_date": "2018-06-08",
+        "ticketPrice": 10,
+        "cinema_shows": {
+          "3": ["12:00 PM", "3:00 PM"],
+          "4": ["11:30 AM", "2:30 PM", "5:30 PM"],
+          "2": ["2:30 PM","9:30 PM"]
+        }
       },
       {
         "id": 2,
-        "title": "Movie Title 3",
+        "title": "Avatar",
         "poster": "/images/moviePosters/avatar.jpeg",
-        "rating": 7.8,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-        "genre": "Action, Adventure",
-        "release_date": "2021-06-01",
-        "cinemasId": [3,1,4]
+        "rating": 7.4,
+        "description": "A paraplegic marine dispatched to the planet Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+        "genre": "Action, Adventure, Fantasy",
+        "release_date": "2009-12-18",
+        "ticketPrice": 8.99,
+        "cinema_shows": {
+          "1": ["10:00 AM", "1:30 PM", "5:00 PM"],
+          "3": ["11:30 AM"]
+        }
       },
       {
         "id": 3,
-        "title": "Movie Title 4",
+        "title": "Monster House",
         "poster": "/images/moviePosters/behance.jpg",
-        "rating": 7.8,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-        "genre": "Action, Adventure",
-        "release_date": "2021-06-01",
-        "cinemasId": [1,3]
+        "rating": 6.6,
+        "description": "Three teens discover that their neighbor's house is really a living, breathing monster.",
+        "genre": "Animation, Comedy, Family",
+        "release_date": "2006-07-21",
+        "ticketPrice": 7.99,
+        "cinema_shows": {
+          "2": ["11:30 AM", "2:30 PM"],
+          "4": ["9:30 AM", "12:30 PM", "3:30 PM"]
+        }
       },
       {
         "id": 4,
-        "title": "Movie Title 5",
+        "title": "Dark",
         "poster": "/images/moviePosters/dark.jpeg",
-        "rating": 7.8,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-        "genre": "Action, Adventure",
-        "release_date": "2021-06-01",
-        "cinemasId": [2]
+        "rating": 8.1,
+        "description": "A family saga with a supernatural twist, set in a German town, where the disappearance of two young children exposes the dark past of the town and four families.",
+        "genre": "Mystery, Thriller, Sci-Fi",
+        "release_date": "2017-12-01",
+        "ticketPrice": 13.8,
+        "cinema_shows": {
+          "1": ["10:00 AM", "1:00 PM", "4:00 PM"],
+          "3": ["9:00 AM"],
+          "4": ["12:00 PM", "3:00 PM"]
+        }
       },
       {
         "id": 5,
-        "title": "Movie Title 6",
+        "title": "Halloween",
         "poster": "/images/moviePosters/halloween.jpeg",
-        "rating": 7.8,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-        "genre": "Action, Adventure",
-        "release_date": "2021-06-01",
-        "cinemasId": [1]
+       "rating": 7.1,
+        "description": "Laurie Strode comes to her final confrontation with Michael Myers, the masked figure who has haunted her since she narrowly escaped his killing spree on Halloween night four decades ago.",
+        "genre": "Horror, Thriller",
+        "release_date": "2018-10-19",
+        "ticketPrice": 13.8,
+        "cinema_shows": {
+          "1": ["10:00 AM", "1:00 PM", "4:00 PM"],
+          "3": ["9:00 AM", "12:00 PM", "3:00 PM"]
+        }
       },
       {
         "id": 6,
-        "title": "Movie Title 7",
+        "title": "John Wick: Chapter 2",
         "poster": "/images/moviePosters/johnWick2.jpeg",
-        "rating": 7.8,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-        "genre": "Action, Adventure",
-        "release_date": "2021-06-01",
-        "cinemasId": [1,3]
+        "rating": 7.5,
+        "description": "After returning to the criminal underworld to repay a debt, John Wick discovers that a large bounty has been put on his head, and he must fight to survive.",
+        "genre": "Action, Thriller, Crime",
+        "release_date": "2017-02-10",
+        "ticketPrice": 7.99,
+        "cinema_shows": {
+          "1": ["9:30 AM", "12:30 PM"],
+          "3": ["10:30 AM", "1:30 PM", "6:30 PM"]
+        }
       },
       {
         "id": 7,
-        "title": "Movie Title 8",
+        "title": "Southland Tales",
         "poster": "/images/moviePosters/southLandTales.jpeg",
-        "rating": 7.8,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum",
-        "genre": "Action, Adventure",
-        "release_date": "2021-06-01",
-        "cinemasId": [1,2]
+        "rating": 5.4,
+        "description": "During a three-day heat wave just before a huge 4th of July celebration, an action star stricken with amnesia meets a tenacious reporter who helps him uncover the truth behind his identity.",
+        "genre": "Mystery, Sci-Fi, Thriller",
+        "release_date": "2006-05-21",
+        "ticketPrice": 7.99,
+        "cinema_shows": {
+          "2": ["11:30 AM", "2:30 PM", "5:30 PM"],
+          "4": ["9:30 AM", "12:30 PM", "3:30 PM"]
+        }
       }
 
     ]

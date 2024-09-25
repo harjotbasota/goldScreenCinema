@@ -26,10 +26,10 @@
       },
       {
         "id": 4,
-        "name": "Cinemark 32",
+        "name": "Cine Wonder",
         "location": "Los Angeles, CA",
         "screens": 32,
-        "seats": 6000,
+        "seats": 4000,
         "image": "/images/cinemaPics/OIPPP.jpeg"
       }
     ]
