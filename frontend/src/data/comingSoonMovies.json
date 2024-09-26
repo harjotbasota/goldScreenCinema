@@ -2,7 +2,7 @@
   "comingSoonMovies": [
     {
       "id": 0,
-      "title": "The Matrix Resurrections",
+      "title": "The Matrix 4",
       "poster": "/images/moviePosters/matrix_resurrections.jpg",
       "cast": ["Keanu Reeves", "Carrie-Anne Moss", "Jada Pinkett Smith"],
       "description": "The Matrix Resurrections is a 2021 science fiction action film produced, written, and directed by Lana Wachowski.",
@@ -47,7 +47,7 @@
     },
     {
       "id": 5,
-      "title": "Shang-Chi and the Legend of the Ten Rings",
+      "title": "Shang-Chi",
       "poster": "/images/moviePosters/shang_chi.jpg",
       "cast": ["Simu Liu", "Awkwafina", "Tony Leung"],
       "description": "Shang-Chi and the Legend of the Ten Rings is a 2021 superhero film directed by Destin Daniel Cretton and produced by Marvel Studios.",
@@ -56,7 +56,7 @@
     },
     {
       "id": 6,
-      "title": "Venom:Let There Be Carnage",
+      "title": "Venom",
       "poster": "/images/moviePosters/venom_let_there_be_carnage.jpeg",
       "cast": ["Tom Hardy", "Michelle Williams", "Woody Harrelson"],
       "description": "Venom: Let There Be Carnage is a 2021 superhero film directed by Andy Serkis and produced by Sony Pictures.",

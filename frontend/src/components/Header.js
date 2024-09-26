@@ -12,6 +12,7 @@ import Menu from '@mui/icons-material/Menu';
 import Close from '@mui/icons-material/Close';
 import { Button} from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 const Header = () => {
@@ -21,8 +22,10 @@ const Header = () => {
   const [displayProfileIcon, setDisplayProfileIcon] = useState(true);
   const [displayMenuIcon, setDisplayMenuIcon] = useState(true);
   const [displayMenuContent, setDisplayMenuContent] = useState(false);
-  const [currentPageIdx, setCurrentPageIdx] = useState(0);
   const searchInputRef = useRef(null);
+  const location = useLocation();
+  const currentPage = location.pathname;
+  console.log(currentPage);
 
   const handleSearchIconClick = () =>{
     setDisplaySearchBox(!displaySearchBox);
@@ -50,10 +53,10 @@ const Header = () => {
       </div>
 
       <div className='navbar'>        
-        <div className={`navOption ${currentPageIdx == 0 ? 'activePage' : ''}`} onClick={()=>setCurrentPageIdx(0)}> <Link to ='/' > <Home /> <span > Home </span></Link> </div>       
-        <div className={`navOption ${currentPageIdx == 1 ? 'activePage' : ''}`} onClick={()=>setCurrentPageIdx(1)}> <Link to ='/shows' > <ShowTime /> <span >  Show Timings </span> </Link> </div>        
-        <div className={`navOption ${currentPageIdx == 2 ? 'activePage' : ''}`} onClick={()=>setCurrentPageIdx(2)}> <Link to ='/cinemas' > <Cinema /> <span >  Cinemas </span> </Link> </div>
-        <div className={`navOption ${currentPageIdx == 3 ? 'activePage' : ''}`} onClick={()=>setCurrentPageIdx(3)}> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </div>
+        <div className={`navOption ${currentPage == "/" ? 'activePage' : ''}`}> <Link to ='/' > <Home /> <span > Home </span></Link> </div>       
+        <div className={`navOption ${currentPage == "/shows" ? 'activePage' : ''}`}> <Link to ='/shows' > <ShowTime /> <span >  Show Timings </span> </Link> </div>        
+        <div className={`navOption ${currentPage == "/cinemas" ? 'activePage' : ''}`}> <Link to ='/cinemas' > <Cinema /> <span >  Cinemas </span> </Link> </div>
+        <div className={`navOption ${currentPage == "/about" ? 'activePage' : ''}`}> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </div>
       </div>
 
       <div className='navRight'>

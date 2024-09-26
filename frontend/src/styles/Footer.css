@@ -3,4 +3,50 @@
     width: 100%;
     background-color: black;
     color:white;
+    display: flex;
+}
+.copyright{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.socialMediaLinks{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.socialMediaLinks img{
+    height: 50%;
+    cursor: pointer;
+}
+.certifications{
+    width: 20%;
+    margin-left: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly ;
+}
+.certifications *{
+    height: 70%;
+}
+
+@media only screen and (max-width:1100px){
+    .socialMediaLinks{
+        width: 40%;
+    }
+    .certifications{
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 600px){
+    .certifications{
+        display: none;
+    }
+    .socialMediaLinks{
+        flex-grow: 0.8;
+    }
 }

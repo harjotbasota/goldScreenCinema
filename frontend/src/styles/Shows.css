@@ -134,3 +134,20 @@
     border: 1px solid green;
     border-radius: 5px;
 }
+@media only screen and (max-width:650px){
+    .showDateContainer{
+        overflow: hidden;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .showDateContainer li{
+        width: 9.5%;
+        margin-left: 5%;
+    }
+    .movieShow{
+        width: 95%;
+    }
+    .cinemaAndShowContainer button{
+        width: 24%;
+    }
+}
