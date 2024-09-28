@@ -8,6 +8,9 @@ const MovieProvider = ({children}) => {
     const [movies,setMovies] = useState([]);
     const [comingSoonMovies, setComingSoonMovies] = useState([]);
     const [cinemas, setCinemas] = useState([]);
+    const [userName, setUserName] = useState('');
+    const [userEmail,setUserEmail] = useState('');
+    const [cinemaLocation, setCinemaLocation] = useState('New York')
 
     useEffect( () => {
         setMovies(moviesdata.movies);
@@ -20,7 +23,8 @@ const MovieProvider = ({children}) => {
     }, []);
 
     return(
-        <MovieContext.Provider value={{movies,setMovies,comingSoonMovies,setComingSoonMovies,cinemas,cinemasData}}>
+        <MovieContext.Provider value={{movies,setMovies,comingSoonMovies,setComingSoonMovies,cinemas,cinemasData,userName,userEmail
+        ,cinemaLocation,setCinemaLocation,setUserName,setUserEmail}}>
             {children}
         </MovieContext.Provider>
     )

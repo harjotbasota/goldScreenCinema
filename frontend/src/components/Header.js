@@ -1,4 +1,4 @@
-import React, { useRef, useState , useEffect } from 'react';
+import React, { useRef, useState , useEffect, useContext } from 'react';
 import '../styles/Header.css';
 import Home from '@mui/icons-material/Home';
 import ShowTime from '@mui/icons-material/EventAvailable';
@@ -7,12 +7,13 @@ import AboutUs from '@mui/icons-material/Apartment';
 import Search from '@mui/icons-material/Search';
 import Location from '@mui/icons-material/MyLocation';
 import Profile from '@mui/icons-material/Person';
-import DownArror from '@mui/icons-material/ArrowDropDown';
+import Switch from '@mui/icons-material/SwitchLeft';
 import Menu from '@mui/icons-material/Menu';
 import Close from '@mui/icons-material/Close';
 import { Button} from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { MovieContext } from '../context/moviesContext';
 
 
 const Header = () => {
@@ -22,10 +23,11 @@ const Header = () => {
   const [displayProfileIcon, setDisplayProfileIcon] = useState(true);
   const [displayMenuIcon, setDisplayMenuIcon] = useState(true);
   const [displayMenuContent, setDisplayMenuContent] = useState(false);
+  const {cinemaLocation, setCinemaLocation} = useContext(MovieContext);
   const searchInputRef = useRef(null);
   const location = useLocation();
   const currentPage = location.pathname;
-  console.log(currentPage);
+  const navigate = useNavigate();
 
   const handleSearchIconClick = () =>{
     setDisplaySearchBox(!displaySearchBox);
@@ -38,6 +40,14 @@ const Header = () => {
     setDisplayMenuContent(!displayMenuContent);
     setDisplayMenuIcon(!displayMenuIcon);
     setDisplaySearchIcon(!displaySearchIcon);
+  }
+  
+  const handleLocationChange = () =>{
+    if(cinemaLocation=='New York'){
+      setCinemaLocation('Los Angeles');
+    }else{
+      setCinemaLocation('New York');
+    }
   }
   useEffect(() => {
     if (displaySearchBox) {
@@ -64,11 +74,11 @@ const Header = () => {
         <input className='searchBox' ref={searchInputRef} placeholder='Search movies and Cinemas'  style={{display: displaySearchBox?'flex':'none'}}></input>
         <Button className='searchButton' onClick={handleSearchIconClick} > <Search /> </Button> 
         </div>
-        <div className='Location'style={displayLocationIcon ? {}: {display:'none'}}>
-            <Button> <Location /> <span> Chandigarh</span> <DownArror /> </Button>
+        <div className='Location' style={displayLocationIcon ? {}: {display:'none'}}>
+            <Button onClick={handleLocationChange}> <Location /> <span> {cinemaLocation} </span> <Switch /> </Button>
         </div>
         <div className='profile' style={displayProfileIcon ? {} : {display: 'none'}}>
-            <Button> <Profile />  <span> Profile </span>  </Button>
+            <Button onClick={()=>navigate('/signUp')}> <Profile />  <span> Profile </span>  </Button>
         </div>
       </div>
       <div className='smallScreens'>

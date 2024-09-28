@@ -7,6 +7,9 @@ import Cinemas from './components/Cinemas';
 import About from './components/About';
 import Footer from './components/Footer';
 import { MovieProvider } from './context/moviesContext';
+import SignUp from './components/SignUp';
+import Profile from './components/Profile';
+import Login from './components/Login';
 
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
         <Route path='/shows' element={<Shows /> } > </Route>
         <Route path='/cinemas' element={<Cinemas /> } > </Route>
         <Route path='/about' element={<About/> } > </Route>
+        <Route path='/signUp' element={<SignUp/> } > </Route>
+        <Route path='/Login' element={<Login/> } > </Route>
+        <Route path='/Profile' element={<Profile/> } > </Route>
       </Routes>
       <Footer />
       </MovieProvider>

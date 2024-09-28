@@ -1,0 +1,31 @@
+.signUp{
+    margin-top: 7.5vh;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(black, grey, white);
+}
+.signUp form{
+    background-color: white;
+    width: 30%;
+    height: 70%;
+    min-width: 475px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 3%;
+}
+
+.signUp form h1{
+    margin-bottom: 3%;
+}
+
+.signUp form input{
+    margin-bottom: 3%;
+    height: 8%;
+    width: 40%;
+    border-radius: 5px;
+}
