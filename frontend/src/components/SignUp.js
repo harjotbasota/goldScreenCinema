@@ -1,50 +1,87 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../styles/SignUp.css';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { MovieContext } from '../context/moviesContext';
 
 const SignUp = () => {
     const [password1, setPassword1] = useState('');
     const [password2,setPassword2] = useState('');
-    const [invalidCredentails,setInvalidCredentails] = useState(false);
-    const {userName, setUserName, userEmail, setUserEmail } = useContext(MovieContext);
+    const [signUpDetail, setSignUpDetail] = useState({username: '', email:'', password:''});
+    const [errMsg, setErrorMsg ] = useState('');
+    const [successMsg, setSuccessMsg ] = useState('');
+    const navigate = useNavigate();
     
-    const handleSignUpFormSubmission = (e)=>{
+    const handleSignUpFormSubmission = async (e)=>{
         e.preventDefault();
-        const formdata = new FormData(e.target);
-        setUserName(formdata.get('Username'));
-        setUserEmail(formdata.get('userEmail'));
-        if(password1!=password2){
-          setInvalidCredentails(true);
-        }else{
-          setInvalidCredentails(false);
+        if(password1!==password2){
+          setErrorMsg('Password Must be Same');
         }
-    }
+        else if(signUpDetail.username.length <=5 || signUpDetail.email.length <=5 || signUpDetail.password.length <=5){
+          setErrorMsg('Username, Email and/or Password too short')
+        }
+        else{
+            try{
+              setErrorMsg('');
+              setSuccessMsg('');
+              const res = await fetch('http://localhost:4000/auth/signup',{
+                headers: { 'Content-Type': 'application/json'},
+                method: 'POST',
+                body: JSON.stringify(signUpDetail)
+              })
+              const msg = await res.json();
+              if(res.status==400){
+                throw new Error(msg.message);
+              }else if(res.status!=200){
+                throw new Error('Failed To create Account')
+              }else{
+                console.log(msg.message);
+                setSuccessMsg(msg.message);
+              }
+            }catch(err){
+              setErrorMsg(err.message);
+              if(err.name = Error){
+                console.log('this is error from throw')
+              }else{
+                console.log('this is the native error')
+              }       
+            }
+        }
+      }
+        
     const handlePasswordInput = (e)=>{
       if(e.target.name == 'password1'){
         setPassword1(e.target.value);
       }
       if(e.target.name == 'password2'){
         setPassword2(e.target.value);
+        setSignUpDetail({...signUpDetail,password:e.target.value})
       }
+    }
+    const handleUserNameInput =(e)=>{
+      setSignUpDetail({...signUpDetail, username: e.target.value});
+    }
+    const handleEmailInput = (e)=>{
+      setSignUpDetail({...signUpDetail, email: e.target.value});
     }
 
   return (
     <div className='signUp'>
-      
       <form onSubmit={handleSignUpFormSubmission}>
         <h1> SignUp</h1>
         <label htmlFor='Username'>Username</label>
-        <input type='text' name='Username' placeholder='Enter username'></input>
+        <input type='text' name='Username' placeholder='Enter username' onChange={handleUserNameInput}></input>
         <label htmlFor='userEmail'>Email</label>
-        <input type='text' name='userEmail' placeholder='xyz@myemail.com'></input>
+        <input type='text' name='userEmail' placeholder='xyz@myemail.com' onChange={handleEmailInput}></input>
         <label htmlFor='password1'>password</label>
         <input type='password' name='password1' placeholder='********' onChange={handlePasswordInput}></input>
         <label htmlFor='password2'>Confirm Password</label>
-        <input type='password' name='password2' placeholder='********' onChange={handlePasswordInput} ></input>
-        { invalidCredentails? <p style={{color: 'red'}}> Password must be same!!!!  </p> : null}
-        <button type='submit' className='submitButton'>SignUp</button>
-        <p> Already have an account? <Link to='/Login'>login</Link> </p>
+        <input type='password' name='password2' placeholder='********' onChange={handlePasswordInput}></input>
+        { errMsg? <p style={{color: 'red'}}> {errMsg}  </p> : null}
+       
+        <button className='submitButton' onClick={handleSignUpFormSubmission}>SignUp</button>
+        { successMsg? <p style={{color: 'green'}}> {successMsg}  </p> : null}
+        <p> Already have an account?<Link to='/Login'>login </Link> </p>
+
       </form>
     </div>
   )
