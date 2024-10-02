@@ -1,0 +1,115 @@
+.movieDetailPage{
+    min-height: 85vh;
+    width: 100%;
+    margin-top: 7.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey-color);
+}
+.movieDetailContainer{
+    box-shadow: 0px 0px 10px black;
+    padding : 2% 1.5% 2%;
+    margin: 10px 0px 10px;
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 90%;
+    max-width: 75%;
+}
+.containerLeftSide{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.containerRightSide{
+    width: 38%;
+    margin-left: 5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    font-size: xxx-large;
+    font-style: italic;
+    margin-top: 12px;
+    text-decoration: underline;
+}
+.infoHeader{
+    margin-left: 12px;
+}
+
+.infoHeader2{
+    margin: 10px 0px 5px;
+    font-size: x-large;
+    border-bottom: 1.5px dashed black;
+}
+.cinemaName::before{
+    content: '+ ';
+    font-weight: 800;
+    margin-left: 5px;
+}
+.cinemaName{
+    margin-top: 5px;
+}
+.showsDetail{
+    margin-left: 12px;
+    color: grey;
+}
+.containerRightSide img{
+    max-height: 80%;
+    max-width: 70%;
+    min-height: 75%;
+}
+.bookTicketButton{
+    background-color: var(--golden-color);
+    margin-top: 14px;
+    margin-bottom: 14px;
+    height: 7%;
+    width: 50%;
+    border-radius: 5px;
+    border: 0px;
+    box-shadow: 0px 0px 5px black;
+}
+.bookTicketButton:hover{
+    height: 6.8%;
+    width: 48%;
+    cursor: pointer;
+}
+@media only screen and (max-width: 1000px){
+    .bookTicketButton{
+        height: 12%;
+    }
+    .containerLeftSide{
+        width: 50%;
+    }
+    .containerRightSide{
+        width: 50%;
+        height: 100%;
+    }
+    .containerRightSide img{
+        height: 80%;
+    }
+}
+@media only screen and (max-width:700px){
+    .movieDetailContainer{
+        flex-direction: column;
+        max-width: 90%;
+    }
+    .containerLeftSide{
+        width: 90%;
+    }
+    .containerRightSide{
+        width: 100%;
+    }
+    .containerRightSide img{
+        width: 100%;
+        height: 100%;
+    }
+}
