@@ -10,6 +10,7 @@ import { MovieProvider } from './context/moviesContext';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import Login from './components/Login';
+import MovieDetail from './components/MovieDetail';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home /> } > </Route>
+        <Route path= '/:movieTitle/details' element={<MovieDetail/>} > </Route>
         <Route path='/shows' element={<Shows /> } > </Route>
         <Route path='/cinemas' element={<Cinemas /> } > </Route>
         <Route path='/about' element={<About/> } > </Route>

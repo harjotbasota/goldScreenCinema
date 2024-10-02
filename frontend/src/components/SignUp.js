@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../styles/SignUp.css';
 import {Link, useNavigate} from 'react-router-dom';
-import { MovieContext } from '../context/moviesContext';
 
 const SignUp = () => {
     const [password1, setPassword1] = useState('');
@@ -20,30 +19,25 @@ const SignUp = () => {
           setErrorMsg('Username, Email and/or Password too short')
         }
         else{
+          setErrorMsg('');
+          setSuccessMsg('');
             try{
-              setErrorMsg('');
-              setSuccessMsg('');
               const res = await fetch('http://localhost:4000/auth/signup',{
                 headers: { 'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify(signUpDetail)
               })
               const msg = await res.json();
-              if(res.status==400){
-                throw new Error(msg.message);
-              }else if(res.status!=200){
-                throw new Error('Failed To create Account')
+              if(!res.ok){
+                setErrorMsg(msg.message);
               }else{
-                console.log(msg.message);
-                setSuccessMsg(msg.message);
+                setSuccessMsg('Account has been created');
+                setTimeout(()=>{
+                  navigate('/login');
+                },1300)
               }
             }catch(err){
-              setErrorMsg(err.message);
-              if(err.name = Error){
-                console.log('this is error from throw')
-              }else{
-                console.log('this is the native error')
-              }       
+              setErrorMsg('Failed to create Account. Please try again later');             
             }
         }
       }
@@ -79,7 +73,7 @@ const SignUp = () => {
         { errMsg? <p style={{color: 'red'}}> {errMsg}  </p> : null}
        
         <button className='submitButton' onClick={handleSignUpFormSubmission}>SignUp</button>
-        { successMsg? <p style={{color: 'green'}}> {successMsg}  </p> : null}
+        { successMsg? <p style={{color: 'green', fontSize:'xx-large'}}> {successMsg}  </p> : null}
         <p> Already have an account?<Link to='/Login'>login </Link> </p>
 
       </form>

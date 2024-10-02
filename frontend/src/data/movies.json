@@ -8,7 +8,6 @@
         "description": "In Gotham City, a struggling stand-up comedian, Arthur Fleck, is driven insane and becomes the Joker.",
         "genre": "Crime, Drama, Thriller",
         "release_date": "2019-10-04",
-        "cinemasId": [2,3],
         "ticketPrice": 12,
         "cinema_shows": {
           "1": ["10:00 AM", "1:00 PM", "4:00 PM"],

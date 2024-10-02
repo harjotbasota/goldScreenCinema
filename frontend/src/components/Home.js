@@ -1,15 +1,17 @@
 import '../styles/Home.css';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { MovieContext } from '../context/moviesContext';
 import { Button, minor } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const {movies ,comingSoonMovies} = useContext(MovieContext);
   const [randomNumber,setRandomNumber] = useState(0);
   setTimeout( ()=> {
     setRandomNumber(Math.floor(Math.random() * movies.length));
-  },5000)
+  },5000);
+  const navigate = useNavigate();
 
 
   return (
@@ -22,7 +24,7 @@ const Home = () => {
               <div className='posterDescription'> <p>Rating: {mymovie.rating} </p></div>
               <div className='posterDescription'> <p> Genre: {mymovie.genre} </p></div>
               <div className='buttonColumn'>
-              <Button>Book Ticket</Button>
+              <Button >Book Ticket</Button>
             </div>
             </div>
             <div className='rightSideOfSlide'>
@@ -56,7 +58,7 @@ const Home = () => {
             </div>
             <div className='buttonColumn'>
               <Button>Book Ticket</Button>
-              <Button> <InfoIcon /> </Button>  
+              <Button onClick={()=>navigate(`/${movie.title}/details`, {state: {movie} })}> <InfoIcon /> </Button>  
             </div>
           </div>
         )) }

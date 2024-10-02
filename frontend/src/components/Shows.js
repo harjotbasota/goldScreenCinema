@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../styles/Shows.css';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import { MovieContext } from '../context/moviesContext';
 import AccessibleIcon from '@mui/icons-material/Accessible';
 import AddIcon from '@mui/icons-material/Add';
