@@ -7,12 +7,18 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const {movies ,comingSoonMovies} = useContext(MovieContext);
+  const {selectedMovie, setSelectedMovie} = useContext(MovieContext);
   const [randomNumber,setRandomNumber] = useState(0);
   setTimeout( ()=> {
     setRandomNumber(Math.floor(Math.random() * movies.length));
   },5000);
   const navigate = useNavigate();
-
+  const handleBookTicketButtonClick = (movieid)=>{
+    setSelectedMovie(movieid);
+    navigate('/bookTicket');
+    console.log(movieid);
+  }
+  
 
   return (
     <div className='home'>
@@ -24,7 +30,7 @@ const Home = () => {
               <div className='posterDescription'> <p>Rating: {mymovie.rating} </p></div>
               <div className='posterDescription'> <p> Genre: {mymovie.genre} </p></div>
               <div className='buttonColumn'>
-              <Button >Book Ticket</Button>
+              <Button onClick={()=>handleBookTicketButtonClick(mymovie.id)} >Book Ticket</Button>
             </div>
             </div>
             <div className='rightSideOfSlide'>
@@ -57,7 +63,7 @@ const Home = () => {
               <p>Rating: {movie.rating}</p>
             </div>
             <div className='buttonColumn'>
-              <Button>Book Ticket</Button>
+              <Button onClick={()=>handleBookTicketButtonClick(movie.id)} >Book Ticket</Button>
               <Button onClick={()=>navigate(`/${movie.title}/details`, {state: {movie} })}> <InfoIcon /> </Button>  
             </div>
           </div>
@@ -80,7 +86,7 @@ const Home = () => {
                     <p>Release Date: {comingSoonMovie.release_date} </p>
                   </div>
                   <div className='buttonColumn'>
-                    <Button> View Details </Button>  
+                    <Button onClick={()=>navigate(`/comingSoon/${comingSoonMovie.title}/details`, {state: {comingSoonMovie} })}> View Details </Button>  
             </div>                  
             </div>
           ))}

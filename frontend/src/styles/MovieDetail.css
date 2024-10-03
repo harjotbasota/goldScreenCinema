@@ -43,6 +43,7 @@
 }
 .infoHeader{
     margin-left: 12px;
+    margin-bottom: 8px;
 }
 
 .infoHeader2{
@@ -71,21 +72,18 @@
     background-color: var(--golden-color);
     margin-top: 14px;
     margin-bottom: 14px;
-    height: 7%;
+    height: 40px;
     width: 50%;
     border-radius: 5px;
     border: 0px;
     box-shadow: 0px 0px 5px black;
 }
 .bookTicketButton:hover{
-    height: 6.8%;
+    height: 38px;
     width: 48%;
     cursor: pointer;
 }
 @media only screen and (max-width: 1000px){
-    .bookTicketButton{
-        height: 12%;
-    }
     .containerLeftSide{
         width: 50%;
     }

@@ -11,6 +11,8 @@ import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import Login from './components/Login';
 import MovieDetail from './components/MovieDetail';
+import ComingSoonMovieDetail from './components/ComingSoonMovieDetail';
+import BookTicket from './components/BookTicket';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home /> } > </Route>
         <Route path= '/:movieTitle/details' element={<MovieDetail/>} > </Route>
+        <Route path= '/comingSoon/:movieTitle/details' element={<ComingSoonMovieDetail/>} > </Route>
+        <Route path='/bookTicket' element={<BookTicket /> } > </Route>
         <Route path='/shows' element={<Shows /> } > </Route>
         <Route path='/cinemas' element={<Cinemas /> } > </Route>
         <Route path='/about' element={<About/> } > </Route>

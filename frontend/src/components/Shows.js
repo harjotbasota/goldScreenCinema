@@ -11,9 +11,8 @@ const Shows = () => {
   const monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   let showDates = [];
   const [activeButton, setActiveButton] = useState(0);
-  const {movies,cinemas} = useContext(MovieContext);
+  const {movies,cinemas,selectedDate,setSelectedDate} = useContext(MovieContext);
   const [expanddetail, setExpandDetail] = useState([]);
-  console.log(expanddetail);
 
   for(let i=0;i<10;i++){    
     showDates.push(<li key={currentDate}>
@@ -24,6 +23,7 @@ const Shows = () => {
       </li>);
     currentDate.setDate(currentDate.getDate()+1);
   }
+  console.log("current date ",currentDate);
 
 
   return (
