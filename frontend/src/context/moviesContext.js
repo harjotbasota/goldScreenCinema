@@ -12,8 +12,11 @@ const MovieProvider = ({children}) => {
     const [userEmail,setUserEmail] = useState('');
     const [cinemaLocation, setCinemaLocation] = useState('New York');
     const [selectedMovie, setSelectedMovie] = useState(0);
-    const [selectedCinema, setSelectedCinema] = useState(-1);
-    const [selectedDate, setSelectedDate] = useState(0);
+    const [selectedCinema, setSelectedCinema] = useState(0);
+    const currentDate = new Date();
+    const monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const [selectedDate, setSelectedDate] = useState(`${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`);
+    
 
     useEffect( () => {
         setMovies(moviesdata.movies);

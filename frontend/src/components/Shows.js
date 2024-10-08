@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../styles/Shows.css';
 import { useState } from 'react';
 import { MovieContext } from '../context/moviesContext';
@@ -13,17 +13,18 @@ const Shows = () => {
   const [activeButton, setActiveButton] = useState(0);
   const {movies,cinemas,selectedDate,setSelectedDate} = useContext(MovieContext);
   const [expanddetail, setExpandDetail] = useState([]);
-
-  for(let i=0;i<10;i++){    
-    showDates.push(<li key={currentDate}>
-      <div className={`dateButtons ${activeButton === i ? 'active' : ''}`} onClick={()=>setActiveButton(i)}>
+  console.log('currently selected date is ',selectedDate);
+  for(let i=0;i<10;i++){
+    const date = `${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`    
+    showDates.push(<li key={currentDate} >
+      <div className={`dateButtons ${activeButton === i ? 'active' : ''}`}  
+      onClick={()=>{setActiveButton(i); setSelectedDate(date); }}>
             <p className='dateText'>{currentDate.getDate()} </p>
             <p className='monthText'>{monthList[currentDate.getMonth()]}</p>
       </div>
       </li>);
     currentDate.setDate(currentDate.getDate()+1);
   }
-  console.log("current date ",currentDate);
 
 
   return (

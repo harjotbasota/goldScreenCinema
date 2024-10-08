@@ -17,9 +17,26 @@
     display: flex;
     width: 100%;
     height: 78vh;
+    
 }
 .showOptionsSelection{
-    border: 1px solid black;
     width: 35%;
     height: 100%;
 }
+.showOptionsSelection form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    font-size: larger;
+    margin-left: 5%;
+    max-width: 400px;
+}
+.showOptionsSelection form label{
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+.showOptionsSelection form select, .showOptionsSelection form select option {
+    height: 30px;
+    cursor: pointer;
+}
+ 
