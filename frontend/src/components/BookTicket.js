@@ -1,31 +1,58 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../styles/BookTicket.css'
 import { MovieContext } from '../context/moviesContext';
-import Seat from '@mui/icons-material/EventSeat';
+import Seat from '@mui/icons-material/Chair';
 
 const BookTicket = () => {
     const currentDate = new Date();
     const monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const {selectedMovie, setSelectedMovie,movies,cinemas,selectedCinema, setSelectedCinema
-    ,selectedDate,setSelectedDate} = useContext(MovieContext);
+    ,selectedDate,setSelectedDate,setSelectedShowTime,selectedShowTime} = useContext(MovieContext);
     const showDates = [];
     let seats = [];
+    const [ticketDetails,setTicketDetails] = useState({
+        movie : selectedMovie,
+        cinema : selectedCinema,
+        date : selectedDate,
+        showTime : selectedShowTime
+    });
+
 
     const handleSelectedMovie = (e)=>{
-        setSelectedMovie(e.target.value);
+        setSelectedMovie(parseInt(e.target.value));
     }
     const handleSelectedCinema = (e) =>{
         setSelectedCinema(e.target.value);
+    }
+    const handleSelectedTime = (e) =>{
+        setSelectedShowTime(e.target.value);
     }
 
     useEffect(()=>{
         if(movies.length > 0 && selectedMovie != undefined){
             setSelectedCinema(Object.keys(movies[selectedMovie].cinema_shows)[0]);
+            setSelectedShowTime(Object.values(movies[selectedMovie].cinema_shows)[0][0]);
         }        
     },[selectedMovie]);
+    useEffect(()=>{
+        if(movies.length > 0 && selectedMovie != undefined && selectedCinema != undefined){
+          const showTimes = movies[selectedMovie].cinema_shows[selectedCinema];
+          if (showTimes && showTimes.length > 0) {
+            setSelectedShowTime(showTimes[0]);
+          }
+        }
+      },[selectedCinema])
 
+    useEffect(()=>{
+        setTicketDetails({
+            movie : selectedMovie,
+            cinema : selectedCinema,
+            date : selectedDate,
+            showTime : selectedShowTime
+        })
+    },[selectedMovie,selectedCinema,selectedDate,selectedShowTime])
 
-    
+    console.log("Ticket detail :" ,ticketDetails);
     for(let i=0;i<10;i++){
         const date = `${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`    
         showDates.push(<option key={date} value={date}>{date}</option>);
@@ -76,12 +103,12 @@ const BookTicket = () => {
                         }
                     </select>
                     <label htmlFor='showTime'>Select Show Time </label>
-                    <select defaultValue="o">
+                    <select onChange={handleSelectedTime}>
                         { 
                                    movies.map((movie)=>{
-                                    return movie.id == selectedMovie ? 
+                                    return movie.id == (selectedMovie || 0)? 
                                         Object.entries(movie.cinema_shows).map(([cinemaid, showTime])=>{
-                                            return cinemaid == selectedCinema ? 
+                                            return cinemaid == (selectedCinema || '1') ? 
                                                showTime.map((show)=>{return <option key={show} value={show}>{show} </option>})
                                                : null
                                         })
@@ -92,10 +119,11 @@ const BookTicket = () => {
                 </form>
             </div>
             <div className='seatSelection'>
-                seat selection
-                {seats.map((row)=>{
-                    return <div className='row'>{row}</div>
-                })}
+                <img src='/images/Other/cinemaScreen.svg' />
+                <div className='screenTitle'> Screen</div>
+                <table>
+                        
+                </table>
             </div>
         </div>
     </div>

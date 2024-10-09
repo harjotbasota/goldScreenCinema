@@ -12,11 +12,11 @@ const MovieProvider = ({children}) => {
     const [userEmail,setUserEmail] = useState('');
     const [cinemaLocation, setCinemaLocation] = useState('New York');
     const [selectedMovie, setSelectedMovie] = useState(0);
-    const [selectedCinema, setSelectedCinema] = useState(0);
+    const [selectedCinema, setSelectedCinema] = useState('1');
     const currentDate = new Date();
     const monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const [selectedDate, setSelectedDate] = useState(`${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`);
-    
+    const [selectedShowTime, setSelectedShowTime] = useState("10:00 AM");
 
     useEffect( () => {
         setMovies(moviesdata.movies);
@@ -31,7 +31,7 @@ const MovieProvider = ({children}) => {
     return(
         <MovieContext.Provider value={{movies,setMovies,comingSoonMovies,setComingSoonMovies,cinemas,cinemasData,userName,userEmail
         ,cinemaLocation,setCinemaLocation,setUserName,setUserEmail,selectedMovie, setSelectedMovie,selectedCinema, setSelectedCinema
-        ,selectedDate,setSelectedDate}}>
+        ,selectedDate,setSelectedDate,selectedShowTime,setSelectedShowTime}}>
             {children}
         </MovieContext.Provider>
     )
