@@ -16,22 +16,45 @@ const BookTicket = () => {
         date : selectedDate,
         showTime : selectedShowTime
     });
+    console.log('Ticket Details: ',ticketDetails);
+    const rowsInCinema = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+    const seatsInRow = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
+    const bookedSeats = ['A1','A2'];
+    const [selectedSeats,setSelectedSeats] = useState([]);
 
 
     const handleSelectedMovie = (e)=>{
         setSelectedMovie(parseInt(e.target.value));
+        setSelectedSeats([]);
     }
     const handleSelectedCinema = (e) =>{
         setSelectedCinema(e.target.value);
+        setSelectedSeats([]);
     }
     const handleSelectedTime = (e) =>{
         setSelectedShowTime(e.target.value);
+        setSelectedSeats([]);
     }
+    const handleSelectedDate = (e) =>{
+        setSelectedDate(e.target.value);
+        setSelectedSeats([]);
+    }
+    const handleSeatClick = (e) =>{
+        const currSelectedSeat = e.target.getAttribute('value');
+        if(selectedSeats.includes(currSelectedSeat)){
+           const tempSelectedSeats = selectedSeats.filter((seat)=> seat != currSelectedSeat)
+           setSelectedSeats(tempSelectedSeats); 
+        }else{
+            setSelectedSeats([...selectedSeats,currSelectedSeat]);
+        }
+    }
+    console.log(selectedSeats);
 
     useEffect(()=>{
         if(movies.length > 0 && selectedMovie != undefined){
             setSelectedCinema(Object.keys(movies[selectedMovie].cinema_shows)[0]);
             setSelectedShowTime(Object.values(movies[selectedMovie].cinema_shows)[0][0]);
+            console.log('selected movie changed')
         }        
     },[selectedMovie]);
     useEffect(()=>{
@@ -41,6 +64,7 @@ const BookTicket = () => {
             setSelectedShowTime(showTimes[0]);
           }
         }
+        console.log('selected cinema changes');
       },[selectedCinema])
 
     useEffect(()=>{
@@ -52,7 +76,6 @@ const BookTicket = () => {
         })
     },[selectedMovie,selectedCinema,selectedDate,selectedShowTime])
 
-    console.log("Ticket detail :" ,ticketDetails);
     for(let i=0;i<10;i++){
         const date = `${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`    
         showDates.push(<option key={date} value={date}>{date}</option>);
@@ -82,7 +105,7 @@ const BookTicket = () => {
                         }
                     </select>
                     <label htmlFor='cinemaName'> Select Cinema </label>
-                    <select defaultValue={Object.keys(movies[selectedMovie].cinema_shows)[0]} onChange={handleSelectedCinema}>
+                    <select defaultValue={selectedCinema} onChange={handleSelectedCinema}>
                         {
                             movies.map((movie)=>{
                                 return movie.id == selectedMovie ? 
@@ -97,13 +120,13 @@ const BookTicket = () => {
                         }
                     </select>
                     <label htmlFor='showDate'>Select Date </label>
-                    <select defaultValue={selectedDate} onChange={(e)=>setSelectedDate(e.target.value)}>
+                    <select defaultValue={selectedDate} onChange={handleSelectedDate}>
                         {
                             showDates.map((date)=> date)
                         }
                     </select>
                     <label htmlFor='showTime'>Select Show Time </label>
-                    <select onChange={handleSelectedTime}>
+                    <select onChange={handleSelectedTime} defaultValue={selectedShowTime}>
                         { 
                                    movies.map((movie)=>{
                                     return movie.id == (selectedMovie || 0)? 
@@ -122,8 +145,58 @@ const BookTicket = () => {
                 <img src='/images/Other/cinemaScreen.svg' />
                 <div className='screenTitle'> Screen</div>
                 <table>
-                        
+                    {
+                        rowsInCinema.map((row)=>{
+                            return <tr key={row} className='cinemaRows'> 
+                                <td className='rowName'> {row} </td>
+                                {seatsInRow.map((seatnum)=>{
+                                    if(seatnum==12){
+                                        return <>
+                                        <td className={`${row}-spacing`} style={{width:'10px'}}></td>
+                                        <td className={`seatName ${selectedSeats.includes(`${row}${seatnum}`)? 'selectedSeat':''} ${bookedSeats.includes(`${row}${seatnum}`)? 'bookedSeat':''}`}
+                                        key={`${row}${seatnum}`} value={`${row}${seatnum}`} onClick={handleSeatClick}>{seatnum}</td>
+                                        </>
+                                    }else{
+                                    return <td className={`seatName ${selectedSeats.includes(`${row}${seatnum}`)? 'selectedSeat':''} ${bookedSeats.includes(`${row}${seatnum}`)? 'bookedSeat':''}`}
+                                    key={`${row}${seatnum}`}  value={`${row}${seatnum}`} onClick={handleSeatClick}>{seatnum}</td>
+                                    }
+                                })}
+                            </tr>
+                        })
+                    }
                 </table>
+            </div>
+            <div className='bookingSummary'>
+                <div className='selectedShowOverview'>
+                    <img src={movies[selectedMovie].poster} />
+                    <div className='OtherSummary'>
+                        <h2>{movies[selectedMovie].title}</h2>
+                        <p> {cinemas[selectedCinema - 1].name},{cinemas[selectedCinema - 1].location}</p>
+                        <p> {selectedDate} </p>
+                        <p> {selectedShowTime} </p>
+                    </div>
+                </div>
+                <div className='selectedSeatsOverview'>
+                    <h4>SEATS</h4>
+                    <div  className='selectedSeatsList'>
+                    {
+                        selectedSeats.map((thisseat)=>(
+                            <div className='selectedSeatsDisplay'>{thisseat}</div>
+                        ))
+                    }
+                    </div>
+                </div>
+                <div className='paymentDetailOverview'>
+                    <h4>Payment Overview</h4>
+                    <p> {selectedSeats.length} X ${movies[selectedMovie].ticketPrice} </p>
+                    <p> Ticket Price:  ${(selectedSeats.length * movies[selectedMovie].ticketPrice).toFixed(2)}</p>
+                    <p> Tax: ${(selectedSeats.length * movies[selectedMovie].ticketPrice * 0.13).toFixed(2)}</p>
+                </div>
+                <div className='proceedClass'>
+                    <h4> Subtotal</h4>
+                    <p> ${(selectedSeats.length * movies[selectedMovie].ticketPrice * 1.13).toFixed(2)}</p>
+                    <button>Proceed</button>
+                </div>
             </div>
         </div>
     </div>

@@ -5,15 +5,25 @@ import { MovieContext } from '../context/moviesContext';
 import AccessibleIcon from '@mui/icons-material/Accessible';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove'
+import {  useNavigate } from 'react-router-dom';
 
 const Shows = () => {
   let currentDate = new Date();
   const monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   let showDates = [];
   const [activeButton, setActiveButton] = useState(0);
-  const {movies,cinemas,selectedDate,setSelectedDate} = useContext(MovieContext);
+  const {movies,cinemas,selectedDate,setSelectedDate,setSelectedMovie,setSelectedCinema,setSelectedShowTime} = useContext(MovieContext);
   const [expanddetail, setExpandDetail] = useState([]);
-  console.log('currently selected date is ',selectedDate);
+  const navigate = useNavigate();
+  const handleTimeButtonClick = (e,movieid,cinemaid,showTime)=>{
+    e.preventDefault();
+    setSelectedMovie(movieid);
+    setSelectedCinema(String(cinemaid));
+    setSelectedShowTime(showTime);
+    console.log('The current cinema id :', cinemaid);
+    navigateToBookTicket();
+  }
+  const navigateToBookTicket = ()=> navigate('/bookTicket');
   for(let i=0;i<10;i++){
     const date = `${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`    
     showDates.push(<li key={currentDate} >
@@ -58,7 +68,7 @@ const Shows = () => {
                              <p>{cinema.name} </p>
                              <div className='showTimingButtons'>
                               {Object.values(movie.cinema_shows[id]).map((show)=>(
-                              <button>{show}</button>                              
+                              <button onClick={(e)=>{handleTimeButtonClick(e,movie.id,cinema.id,show)}}>{show}</button>                              
                               ))}
                               </div>
                            </div> 

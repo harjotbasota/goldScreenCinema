@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { MovieContext } from '../context/moviesContext';
 import '../styles/MovieDetail.css';
 
@@ -7,7 +7,14 @@ const MovieDetail = () => {
     const location = useLocation();
     const movie = location.state.movie;
     const cinemasdata = useContext(MovieContext);
+    const {setSelectedMovie} = useContext(MovieContext);
     console.log(cinemasdata.cinemas);
+    const navigate = useNavigate();
+    const handleBookTicketClick =(e)=>{
+      e.preventDefault();
+      setSelectedMovie(movie.id);
+      navigate('/bookTicket');
+    }
   return (
     <div className='movieDetailPage'>
       <div className='movieDetailContainer'>
@@ -30,7 +37,7 @@ const MovieDetail = () => {
                 })
             })
           }
-          <button className='bookTicketButton'> BOOK TICKET </button>
+          <button className='bookTicketButton' onClick={handleBookTicketClick}> BOOK TICKET </button>
       </div>
       <div className='containerRightSide'>
           <img src={movie.poster} />
