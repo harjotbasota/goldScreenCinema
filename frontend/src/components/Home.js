@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const {movies ,comingSoonMovies} = useContext(MovieContext);
-  const {selectedMovie, setSelectedMovie} = useContext(MovieContext);
+  const {setSelectedMovie,setSelectedCinema,setSelectedShowTime} = useContext(MovieContext);
   const [randomNumber,setRandomNumber] = useState(0);
   setTimeout( ()=> {
     setRandomNumber(Math.floor(Math.random() * movies.length));
@@ -15,8 +15,9 @@ const Home = () => {
   const navigate = useNavigate();
   const handleBookTicketButtonClick = (movieid)=>{
     setSelectedMovie(movieid);
+    setSelectedCinema(Object.keys(movies[movieid].cinema_shows)[0]);
+    setSelectedShowTime(Object.values(movies[movieid].cinema_shows)[0][0]);
     navigate('/bookTicket');
-    console.log(movieid);
   }
   
 

@@ -164,3 +164,21 @@
     cursor: pointer;
     margin-left: 10px;
 }
+.ticketBookingResponse{
+    z-index: 4;
+    position: fixed;
+    background-color: transparent;
+    height: 85vh;
+    width: 100%;
+    top: 7.5vh;
+    left: 0%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.confirmationPrompt{
+    height: 40%;
+    width: 40%;
+    border: 1px solid black;
+    background-color: aliceblue;
+}

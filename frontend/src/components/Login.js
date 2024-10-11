@@ -52,7 +52,7 @@ const Login = () => {
        
         <button className='submitButton' onClick={handleLoginFormSubmission}>Login</button>
         { successMsg? <p style={{color: 'green', fontSize:'xx-large'}}> {successMsg}  </p> : null}
-        <p> Don't have an account?<Link to='/singUp'>Sign Up </Link> </p>
+        <p> Don't have an account?<Link to='/signUp'>Sign Up </Link> </p>
 
       </form>
     </div>

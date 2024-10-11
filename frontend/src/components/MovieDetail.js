@@ -7,12 +7,14 @@ const MovieDetail = () => {
     const location = useLocation();
     const movie = location.state.movie;
     const cinemasdata = useContext(MovieContext);
-    const {setSelectedMovie} = useContext(MovieContext);
+    const {setSelectedMovie,setSelectedCinema,setSelectedShowTime } = useContext(MovieContext);
     console.log(cinemasdata.cinemas);
     const navigate = useNavigate();
     const handleBookTicketClick =(e)=>{
       e.preventDefault();
       setSelectedMovie(movie.id);
+      setSelectedCinema(Object.keys(movie.cinema_shows)[0]);
+      setSelectedShowTime(Object.values(movie.cinema_shows)[0][0]);
       navigate('/bookTicket');
     }
   return (

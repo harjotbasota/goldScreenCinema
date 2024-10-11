@@ -8,6 +8,7 @@ const BookTicket = () => {
     const monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const {selectedMovie, setSelectedMovie,movies,cinemas,selectedCinema, setSelectedCinema
     ,selectedDate,setSelectedDate,setSelectedShowTime,selectedShowTime} = useContext(MovieContext);
+
     const showDates = [];
     let seats = [];
     const [ticketDetails,setTicketDetails] = useState({
@@ -21,19 +22,29 @@ const BookTicket = () => {
     const seatsInRow = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
     const bookedSeats = ['A1','A2'];
     const [selectedSeats,setSelectedSeats] = useState([]);
+    const [displayTicketBookingResponse, setDisplayTicketBookingResponse]= useState(false);
 
 
     const handleSelectedMovie = (e)=>{
         setSelectedMovie(parseInt(e.target.value));
+        console.log('handle selected movie');
+        setSelectedCinema(Object.keys(movies[e.target.value].cinema_shows)[0]);
+        setSelectedShowTime(Object.values(movies[e.target.value].cinema_shows)[0][0]);
         setSelectedSeats([]);
     }
     const handleSelectedCinema = (e) =>{
         setSelectedCinema(e.target.value);
         setSelectedSeats([]);
+        const showTimes = movies[selectedMovie].cinema_shows[e.target.value];
+        if (showTimes && showTimes.length > 0) {
+          setSelectedShowTime(showTimes[0]);
+        }
+        console.log('handleselectedcinema ')
     }
     const handleSelectedTime = (e) =>{
         setSelectedShowTime(e.target.value);
         setSelectedSeats([]);
+        console.log('handle selected time')
     }
     const handleSelectedDate = (e) =>{
         setSelectedDate(e.target.value);
@@ -48,24 +59,6 @@ const BookTicket = () => {
             setSelectedSeats([...selectedSeats,currSelectedSeat]);
         }
     }
-    console.log(selectedSeats);
-
-    useEffect(()=>{
-        if(movies.length > 0 && selectedMovie != undefined){
-            setSelectedCinema(Object.keys(movies[selectedMovie].cinema_shows)[0]);
-            setSelectedShowTime(Object.values(movies[selectedMovie].cinema_shows)[0][0]);
-            console.log('selected movie changed')
-        }        
-    },[selectedMovie]);
-    useEffect(()=>{
-        if(movies.length > 0 && selectedMovie != undefined && selectedCinema != undefined){
-          const showTimes = movies[selectedMovie].cinema_shows[selectedCinema];
-          if (showTimes && showTimes.length > 0) {
-            setSelectedShowTime(showTimes[0]);
-          }
-        }
-        console.log('selected cinema changes');
-      },[selectedCinema])
 
     useEffect(()=>{
         setTicketDetails({
@@ -195,12 +188,18 @@ const BookTicket = () => {
                 <div className='proceedClass'>
                     <h4> Subtotal</h4>
                     <p> ${(selectedSeats.length * movies[selectedMovie].ticketPrice * 1.13).toFixed(2)}</p>
-                    <button>Proceed</button>
+                    <button onClick={()=>{setDisplayTicketBookingResponse(true)}}>Proceed</button>
                 </div>
             </div>
         </div>
+        <div className='ticketBookingResponse' onClick={()=>setDisplayTicketBookingResponse(false)} style={displayTicketBookingResponse?{display:'flex'}:{display:'none'}}>
+            <div className='confirmationPrompt'>
+                confirmationPrompt here
+                <button onClick={()=>setDisplayTicketBookingResponse(false)}>confirm</button>
+            </div>
+        </div>
     </div>
-  : <div>Loading ...</div>) 
+  : <div style={{marginTop:'7.5vh'}}>Loading ...</div>) 
 }
 
 export default BookTicket

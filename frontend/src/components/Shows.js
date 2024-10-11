@@ -12,7 +12,7 @@ const Shows = () => {
   const monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   let showDates = [];
   const [activeButton, setActiveButton] = useState(0);
-  const {movies,cinemas,selectedDate,setSelectedDate,setSelectedMovie,setSelectedCinema,setSelectedShowTime} = useContext(MovieContext);
+  const {movies,cinemas,setSelectedDate,setSelectedMovie,setSelectedCinema,setSelectedShowTime} = useContext(MovieContext);
   const [expanddetail, setExpandDetail] = useState([]);
   const navigate = useNavigate();
   const handleTimeButtonClick = (e,movieid,cinemaid,showTime)=>{
@@ -21,9 +21,8 @@ const Shows = () => {
     setSelectedCinema(String(cinemaid));
     setSelectedShowTime(showTime);
     console.log('The current cinema id :', cinemaid);
-    navigateToBookTicket();
+    navigate('/bookTicket');
   }
-  const navigateToBookTicket = ()=> navigate('/bookTicket');
   for(let i=0;i<10;i++){
     const date = `${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`    
     showDates.push(<li key={currentDate} >
