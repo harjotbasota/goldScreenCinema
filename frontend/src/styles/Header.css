@@ -95,6 +95,34 @@
 .searchIcon{
     display: flex;
 }
+.searchResults{
+    display: flex;
+    height: auto;
+    width: 300px;
+    background-color: #fbf8f8;;
+    position: fixed;
+    z-index: 3;
+    top: 6.5vh;
+    max-height: 50%;
+    overflow: auto;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.searchResults ul{
+    list-style: none;
+    padding: 2px;
+}
+.searchResults ul li{
+    cursor: pointer;
+    height: 30px;
+    padding-left: 5px;
+    padding-bottom: 6px;
+    padding-top: 4px;
+}
+.searchResults ul li:hover{
+    background-color: grey;
+}
 .smallScreens{
     display: none;
 }
@@ -188,7 +216,8 @@
     }
     .searchIcon Button{
         display: block;
-        width: 5px;
+        width: 4px;
+        padding: 0px;
     }
     .menuItems{
         min-width: none;
@@ -196,6 +225,9 @@
     }
     .menuItems li a{
         margin: 5px;
+    }
+    .searchResults{
+        width: 170px;
     }
 }
 

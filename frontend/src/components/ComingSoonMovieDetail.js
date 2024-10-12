@@ -10,7 +10,7 @@ const ComingSoonMovieDetail = () => {
     <div className='comingSoonMovieDetailPage'>
       <div className='comingSoonMovieContainer'>
         <div className='containerLeftSide'>
-          <span className='title'>{comingSoonMovie.title}</span>
+          <span className='title'>{comingSoonMovie.title} </span>
           <p className='infoHeader'> Description: <span className='info'>{comingSoonMovie.description}</span>  </p> 
           <p className='infoHeader'> Genre:  <span className='info'>{comingSoonMovie.genre}</span>   </p> 
           <p className='infoHeader'> Release Date:  <span className='info'>{comingSoonMovie.release_date}</span>  </p>

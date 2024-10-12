@@ -15,6 +15,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { MovieContext } from '../context/moviesContext';
 
+const useClickOutsideSearchDiv = (ref, handleClose) => {
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        handleClose();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref, handleClose]);
+};
 
 const Header = () => {
   const [displaySearchBox, setDisplaySearchBox ] = useState(false);
@@ -23,17 +36,30 @@ const Header = () => {
   const [displayProfileIcon, setDisplayProfileIcon] = useState(true);
   const [displayMenuIcon, setDisplayMenuIcon] = useState(true);
   const [displayMenuContent, setDisplayMenuContent] = useState(false);
-  const {cinemaLocation, setCinemaLocation} = useContext(MovieContext);
-  const searchInputRef = useRef(null);
+  const [displaySearchResults, setDisplaySearchResult] =useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const {cinemaLocation, setCinemaLocation,movies,cinemas,comingSoonMovies} = useContext(MovieContext);
+  const searchInputRef = useRef('');
+  const searchBoxDivRef = useRef('');
   const location = useLocation();
   const currentPage = location.pathname;
   const navigate = useNavigate();
 
   const handleSearchIconClick = () =>{
-    setDisplaySearchBox(!displaySearchBox);
-    setDisplayLocationIcon(!displayLocationIcon);
-    setDisplayMenuIcon(!displayMenuIcon);
-    setDisplayProfileIcon(!displayProfileIcon);
+    setDisplaySearchBox(true);
+    setDisplayLocationIcon(false);
+    setDisplayMenuIcon(false);
+    setDisplayProfileIcon(false);
+    setDisplaySearchResult(true);
+  }
+  const handleSearchCloseClick = ()=>{
+    setDisplaySearchResult(false);
+    setDisplaySearchBox(false);
+    setDisplayLocationIcon(true);
+    setDisplayMenuIcon(true);
+    setDisplayProfileIcon(true); 
+    searchInputRef.current.value = ''; 
+    setSearchResults([]);  
   }
 
   const handleDisplayMenuContent = () =>{
@@ -42,6 +68,37 @@ const Header = () => {
     setDisplaySearchIcon(!displaySearchIcon);
   }
   
+  const handleSearch = (e)=>{
+    console.log(e.target.value);
+    setDisplaySearchResult(true);
+    const filteredMovies = movies.filter((movie)=>{
+      return movie.title.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    const fileteredComingSoonMovies = comingSoonMovies.filter((comingSoonMovie)=>{
+      return comingSoonMovie.title.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    const filteredCinemas = cinemas.filter((cinema)=>{
+      return cinema.name.toLowerCase().includes(e.target.value.toLowerCase()) || cinema.location.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    setSearchResults([...filteredMovies,...fileteredComingSoonMovies,...filteredCinemas]);
+  }
+
+  const handleSearchResultClick = (searchResult) =>{
+    console.log(searchResult);
+    setDisplaySearchResult(false);
+    if(searchResult.title){
+      if(searchResult.ticketPrice){
+        navigate(`/${searchResult.title}/details`, {state: {movie: searchResult} })
+      }else{
+        navigate(`/comingSoon/${searchResult.title}/details`, {state: {comingSoonMovie: searchResult} })
+      }
+    }else{
+      navigate('/cinemas');
+    }
+    handleSearchCloseClick();
+  }
+
+
   const handleLocationChange = () =>{
     if(cinemaLocation=='New York'){
       setCinemaLocation('Los Angeles');
@@ -49,11 +106,13 @@ const Header = () => {
       setCinemaLocation('New York');
     }
   }
+
   useEffect(() => {
     if (displaySearchBox) {
       searchInputRef.current.focus();
     }
   }, [displaySearchBox]);
+  useClickOutsideSearchDiv(searchBoxDivRef, handleSearchCloseClick);
 
   return (
     <div className='headerContainer'>
@@ -69,10 +128,27 @@ const Header = () => {
         <div className={`navOption ${currentPage == "/about" ? 'activePage' : ''}`}> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </div>
       </div>
 
-      <div className='navRight'>
+      <div className='navRight' ref={searchBoxDivRef}>
         <div className='searchIcon' style={displaySearchIcon ? {} : {display:'none'}}>
-        <input className='searchBox' ref={searchInputRef} placeholder='Search movies and Cinemas'  style={{display: displaySearchBox?'flex':'none'}}></input>
-        <Button className='searchButton' onClick={handleSearchIconClick} > <Search /> </Button> 
+        <input className='searchBox' ref={searchInputRef} placeholder='Search movies and Cinemas' 
+        onChange={handleSearch} style={{display: displaySearchBox?'flex':'none'}}></input>
+
+         {
+          displaySearchBox?
+                <Button className='searchButton' onClick={handleSearchCloseClick} > <Close/> </Button>:
+                <Button className='searchButton' onClick={handleSearchIconClick}> <Search/> </Button>
+         }
+        <div className='searchResults' style={{display: displaySearchResults?'flex': 'none'}}>
+          <ul>
+          { searchResults.length != 0 ?
+            searchResults.map((result)=>(
+              <li onClick={()=>handleSearchResultClick(result)}>
+                { result.title? result.title : result.name+' ,'+result.location}
+              </li>
+            )) : searchInputRef.current.value == ''?<li style={{color:'blue'}}> Start Searching...</li>: <li style={{color:'red'}}> No Match found </li>
+          }
+          </ul> 
+        </div>
         </div>
         <div className='Location' style={displayLocationIcon ? {}: {display:'none'}}>
             <Button onClick={handleLocationChange}> <Location /> <span> {cinemaLocation} </span> <Switch /> </Button>
@@ -89,12 +165,12 @@ const Header = () => {
             <li className='menuItem'> <div className='close' style={displayMenuContent? {display:'flex'} : {} } onClick={handleDisplayMenuContent}>
             <Button>  <Close />  </Button>
           </div> </li> 
+
             <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/' > <Home /> <span > Home </span></Link> </li>       
             <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/shows' > <ShowTime /> <span >  Shows </span> </Link> </li>        
             <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/cinemas' > <Cinema /> <span >  Cinemas </span> </Link> </li>
             <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/about' > <AboutUs /> <span >  About Us </span></Link> </li>
-            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='#' > <Location /> <span >  Location </span></Link> </li>
-            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='#' > <Profile /> <span >  Profile </span></Link> </li>
+            <li className='menuItem' onClick={handleDisplayMenuContent}> <Link to ='/profile' > <Profile /> <span >  Profile </span></Link> </li>
           </ul>    
       </div>
     

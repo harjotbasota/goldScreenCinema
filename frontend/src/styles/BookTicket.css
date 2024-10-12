@@ -16,7 +16,8 @@
 .showDetailSelectionContainer{
     display: flex;
     width: 100%;
-    height: 78vh;    
+    height: 78vh;
+    flex-wrap: wrap;    
 }
 .showOptionsSelection{
     width: 25%;
@@ -28,14 +29,19 @@
     width: 90%;
     font-size: larger;
     margin-left: 5%;
-    max-width: 400px;
 }
 .showOptionsSelection form label{
     margin-top: 12px;
     margin-bottom: 5px;
 }
-.showOptionsSelection form select, .showOptionsSelection form select option {
+.showOptionsSelection form select {
     height: 30px;
+    width: 100%;
+    cursor: pointer;
+}
+.showOptionsSelection form select option{
+    height: 30px;
+    width: 80%;
     cursor: pointer;
 }
 .seatSelection{
@@ -44,6 +50,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow: auto;
 }
 .seatSelection img{
     max-width: 100%;
@@ -53,8 +60,8 @@
     height: 50%;
     width: 80%;
     border-collapse: separate;
-    border-spacing: 5px 15px;
-    margin-top: 30px;
+    border-spacing: 2.5px 8px;
+    margin-top: 25px;
     table-layout: fixed;
 }
 .seatSelection table tr td{
@@ -68,9 +75,9 @@
     border-spacing: 8px;
 }
 .seatName{
-    border: 1px solid grey;
     border-radius: 5px;
     font-size: small;
+    border: 1px solid grey;
 }
 .selectedSeat{
     background-color: green;
@@ -79,6 +86,7 @@
     background-color: red;
     pointer-events: none;
     cursor: not-allowed;
+    color: red;
 }
 
 
@@ -86,12 +94,12 @@
     width: 20%;
     height: 100%;
     margin-left: auto;
-    border: 1px solid grey;
+    max-height: 800px;
+    box-shadow: 0px 0px 5px grey;
 }
 .selectedShowOverview{
-    height: 25%;
+    height: 28%;
     display: flex;
-    border: 1px solid grey;
 }
 .selectedShowOverview img{
     width: 25%;
@@ -112,7 +120,6 @@
 }
 .selectedSeatsOverview{
     height: 23%;
-    border-bottom: 1px solid grey;
     overflow: auto;
 }
 
@@ -136,16 +143,12 @@
 }
 .paymentDetailOverview{
     height: 20%;
-    border-bottom: 1px solid grey;
 }
 .paymentDetailOverview p{
     margin-left: 10px;
 }
 .proceedClass{
-    height: 20%;
-    margin-top: 20%;
-    border-bottom: 1px solid grey;
-    border-top: 1px solid grey;
+    height: 10%;
 }
 
 .proceedClass p{
@@ -181,4 +184,64 @@
     width: 40%;
     border: 1px solid black;
     background-color: aliceblue;
+}
+@media only screen and (max-width:1000px){
+    .showOptionsSelection{
+        height: 70%;
+        width: 28%;
+        margin-top: 10%;
+    }
+    .seatSelection{
+        height: 80%;
+        width: 70%;
+    }
+    .bookingSummary{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 20%;
+        font-size: small;
+    }
+    .selectedShowOverview{
+        height: 100%;
+        width: 35%;
+    }
+    .selectedSeatsOverview{
+        height: 100%;
+        min-width: 20%;
+        max-width: 28%;
+    }
+    .paymentDetailOverview{
+        height: 100%;
+        width: 20%;
+    }
+
+}
+@media only screen and (max-width:550px){
+    .showDetailSelectionContainer{
+        height: auto;
+    }
+    .showOptionsSelection{
+        height: 75%;
+        width: 100%;
+        margin-top: 0%;
+    }
+    .seatSelection{
+        height: 100%;
+        width: 100%;
+    }
+    .seatSelection table{
+        height: 50%;
+        width: 80%;
+        border-collapse: separate;
+        border-spacing: 2.8px 6.5px;
+        margin-top: 25px;
+        table-layout: fixed;
+    }
+    .seatSelection table tr td{
+        height: 11.3px;
+        width: 11.3px;
+        border-radius: 2px;
+        font-size: xx-small;
+    }
 }
