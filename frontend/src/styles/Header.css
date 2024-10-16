@@ -126,47 +126,9 @@
 .smallScreens{
     display: none;
 }
-.menu{
-    
-}
-.close{
-    justify-content: end;
-    align-items: flex-end;
-}
-.close svg{
-    color: white;
-}
-.close Button{
-    background-color: red;
-}
 .menuItems{
-    margin-top: 15px;
-    list-style: none;
-    background-color: white;
-    width: 200px;
-    padding: 0;
-    border-radius: 10px;
-    margin-right: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-.menuItems li a{
-    text-decoration: none;
-    font-size: large;
-    color: black;
-    padding: 5px;
-    margin: 30px;
-    border-radius: 7px;
-    text-align: top;
-}
-.menuItems li{
-    border-radius: 15px;
-}
-.menuItems li:hover{
-    background-color: var(--grey-color);
-}
-.menuItems li:nth-child(1):hover{
-    background-color: transparent;
+    display: 'flex';
+    flex-direction: 'column';
 }
 
 @media only screen and (max-width: 1020px) {
