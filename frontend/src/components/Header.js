@@ -51,6 +51,7 @@ const Header = () => {
     setDisplayMenuIcon(false);
     setDisplayProfileIcon(false);
     setDisplaySearchResult(true);
+    setDisplayMenuIcon(false);
   }
   const handleSearchCloseClick = ()=>{
     setDisplaySearchResult(false);
@@ -59,7 +60,8 @@ const Header = () => {
     setDisplayMenuIcon(true);
     setDisplayProfileIcon(true); 
     searchInputRef.current.value = ''; 
-    setSearchResults([]);  
+    setSearchResults([]);
+    setDisplayMenuIcon(true);  
   }
 
   const handleDisplayMenuContent = () =>{
@@ -164,39 +166,19 @@ const Header = () => {
             <Button onClick={()=>navigate('/signUp')}> <Profile />  <span> Profile </span>  </Button>
         </div>
       </div>
-      {/*
-      <div className='smallScreens' onClick={(e)=>console.log(e.target.value)}>
-         <div className='menu' onClick={handleDisplayMenuContent} style={displayMenuIcon ? {} : {display: 'none'}}>
-            <Button>  <Menu />  </Button>
-          </div>  
-          <div className='menuItems' style={displayMenuContent? {display:'block'} : {} }>
-            <div className='menuItem'>
-               <div className='close' style={displayMenuContent? {display:'flex'} : {} } onClick={handleHideMenuContent}>
-                <Button>  <Close />  </Button>
-                </div>
-           </div> 
-            <div className='menuItem' value='/' onClick={()=>handleHideMenuContent('/')}> <Home /> <span > Home </span> </div>       
-            <div className='menuItem' onClick={()=>handleHideMenuContent('/shows')}>  <ShowTime /> <span >  Shows </span> </div>        
-            <div className='menuItem' onClick={()=>handleHideMenuContent('/cinemas')}>  <Cinema /> <span >  Cinemas </span> </div>
-            <div className='menuItem' onClick={()=>handleHideMenuContent('/about')}>  <AboutUs /> <span >  About Us </span></div>
-            <div className='menuItem' onClick={()=>handleHideMenuContent('/profile')}>  <Profile /> <span >  Profile </span></div>
-          </div> 
-      </div>
-        */}
-      <div className='smallScreens' >
-        <div className='menu'>
+
+      <div className='smallScreens'>
+        <div className='menu' >  
           {
-            displayMenuIcon ? <Button onClick={handleDisplayMenuContent}> <Menu/> </Button> 
-            :<Button onClick={()=>handleHideMenuContent}> <Close/> </Button>
-          }
-          {
-            displayMenuContent ? <div>
-            <Link onClick={handleHideMenuContent} to='/'> <Home/> Home </Link>
-            <Link onClick={handleHideMenuContent} to='/shows'> <ShowTime /> Shows </Link>
-            <Link onClick={handleHideMenuContent} to='/cinemas'> <Cinema /> Cinemas </Link>
-            <Link onClick={handleHideMenuContent} to='/about'> <AboutUs /> About Us </Link>
-            <Link onClick={handleHideMenuContent} to='/profile'> <Profile /> Profile </Link> </div>
-            : null
+            displayMenuContent ? <div className='menuItemsList'>
+            <Button className='menuItem closeButton' onClick={handleHideMenuContent}> <Close/> </Button>
+            <Link className='menuItem' onClick={handleHideMenuContent} to='/'> <Home/> Home </Link>
+            <Link className='menuItem' onClick={handleHideMenuContent} to='/shows'> <ShowTime /> Shows </Link>
+            <Link className='menuItem' onClick={handleHideMenuContent} to='/cinemas'> <Cinema /> Cinemas </Link>
+            <Link className='menuItem' onClick={handleHideMenuContent} to='/about'> <AboutUs /> About Us </Link>
+            <Link className='menuItem' onClick={handleHideMenuContent} to='/profile'> <Profile /> Profile </Link> 
+            </div> :  displayMenuIcon ? <Button  style={{marginTop:'0.75vh',color:'black'}} onClick={handleDisplayMenuContent}> <Menu/> </Button> : null
+            
           }
         </div>
 

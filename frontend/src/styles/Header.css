@@ -85,6 +85,7 @@
 .navRight .Location Button {
     background-color: var(--grey-color);
 }
+
 .navRight .profile Button {
     background-color: var(--cream-color);
 }
@@ -126,10 +127,39 @@
 .smallScreens{
     display: none;
 }
-.menuItems{
-    display: 'flex';
-    flex-direction: 'column';
+.menuItemsList{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.2vh;
+    background-color: var(--grey-color);
+    width: 150px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px black;
 }
+.menuItem svg{
+    vertical-align: bottom;
+}
+.menuItem {
+    color: black;
+    text-decoration: none;
+    padding: 8px;
+    border-bottom: 1px solid black;
+}
+.menuItem:first-child{
+    background-color: rgb(255, 0, 0);
+}
+.menuItem:first-child:hover{    
+    background-color: rgba(255, 0, 0, 0.649);
+}
+.menuItem:hover{
+    color:white;
+    background-color: black;
+}
+
+.closeButton svg{
+   color: white;
+}
+
 
 @media only screen and (max-width: 1020px) {
     .navbar{
@@ -142,12 +172,6 @@
         width: auto;
         margin-left: auto;
     }
-    .close , .menuItems{
-        display: none;
-    }
-
-
-
 }
 
 @media only screen and (max-width: 650px){
@@ -181,16 +205,10 @@
         width: 4px;
         padding: 0px;
     }
-    .menuItems{
-        min-width: none;
-        width: 130px;
-    }
-    .menuItems li a{
-        margin: 5px;
-    }
     .searchResults{
         width: 170px;
     }
+
 }
 
 
