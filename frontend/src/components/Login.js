@@ -10,27 +10,31 @@ const Login = () => {
     
     const handleLoginFormSubmission = async (e)=>{
         e.preventDefault();
-        setErrorMsg('');
-        setSuccessMsg('');
-          try{
-            const res = await fetch('http://localhost:4000/auth/login',{
-              headers: { 'Content-Type': 'application/json'},
-              method: 'POST',
-              body: JSON.stringify(loginDetail)
-            })
-            const msg = await res.json();
-            if(!res.ok){
-              setErrorMsg(msg.message);
-            }else{
-              setSuccessMsg('You are now logged in');
-              setTimeout(()=>{
-                  console.log('navigate to root');
-              },1300)
+        if(loginDetail.email.length <=2 || loginDetail.password.length <=5){
+          setErrorMsg('Enter valid credentails');
+        }else{
+          setErrorMsg('');
+          setSuccessMsg('');
+            try{
+              const res = await fetch('http://localhost:4000/auth/login',{
+                headers: { 'Content-Type': 'application/json'},
+                method: 'POST',
+                body: JSON.stringify(loginDetail)
+              })
+              const msg = await res.json();
+              console.log(msg);
+              if(!res.ok){
+                setErrorMsg(msg.message);
+              }else{
+                setSuccessMsg('You are now logged in');
+                setTimeout(()=>{
+                    console.log('navigate to root');
+                },1300)
+              }
+            }catch(err){
+              setErrorMsg('Failed to Login.Try again');             
             }
-          }catch(err){
-            setErrorMsg('Failed to Login.Try again');             
-          }
-
+        }
       }
         
     const handlePasswordInput = (e)=>{

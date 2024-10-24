@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../styles/SignUp.css';
 import {Link, useNavigate} from 'react-router-dom';
+import validator from 'validator';
 
 const SignUp = () => {
     const [password1, setPassword1] = useState('');
@@ -15,8 +16,10 @@ const SignUp = () => {
         if(password1!==password2){
           setErrorMsg('Password Must be Same');
         }
-        else if(signUpDetail.username.length <=5 || signUpDetail.email.length <=5 || signUpDetail.password.length <=5){
-          setErrorMsg('Username, Email and/or Password too short')
+        else if(signUpDetail.username.length <=5 || signUpDetail.password.length <=5){
+          setErrorMsg('Username and/or Password too short')
+        }else if(!validator.isEmail(signUpDetail.email)){
+          setErrorMsg('Enter a valid Email');
         }
         else{
           setErrorMsg('');

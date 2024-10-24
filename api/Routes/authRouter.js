@@ -1,18 +1,9 @@
 const router = require('express').Router();
+const authController= require('../Controllers/userController');
 
-router.post('/signup',(req,res)=>{
-    console.log('signup Msg');
-    console.log(req.body);
-    const {username} = req.body;
-    if(username == 'harjotbasota'){
-        res.status(400).json({message:'Username is not allowed'});
-    }
-    res.status(200).json({message:'Account has been created'});
-})
+router.post('/signup',authController.signUpUserController);
 
-router.post('/login', (req,res)=>{
-    console.log('Login message');
-    console.log(req.body);
-    res.status(200).json(req.body);
-})
+router.post('/login',authController.logInUserController);
+
+
 module.exports = router;
