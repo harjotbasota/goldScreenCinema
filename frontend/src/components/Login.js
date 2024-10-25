@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/Login.css';
 import {Link, useNavigate} from 'react-router-dom';
+import { MovieContext } from '../context/moviesContext';
 
 const Login = () => {
     const [loginDetail, setLoginDetail] = useState({email: '', password:''});
     const [errMsg, setErrorMsg ] = useState('');
     const [successMsg, setSuccessMsg ] = useState('');
+    const {accessToken,setAccessToken}= useContext(MovieContext);
     const navigate = useNavigate();
     
     const handleLoginFormSubmission = async (e)=>{
@@ -16,13 +18,14 @@ const Login = () => {
           setErrorMsg('');
           setSuccessMsg('');
             try{
-              const res = await fetch('http://localhost:4000/auth/login',{
+              const res = await fetch('https://localhost:4000/auth/login',{
                 headers: { 'Content-Type': 'application/json'},
                 method: 'POST',
-                body: JSON.stringify(loginDetail)
+                body: JSON.stringify(loginDetail),
+                credentials: 'include'
               })
               const msg = await res.json();
-              console.log(msg);
+              setAccessToken(msg.Access_Token);
               if(!res.ok){
                 setErrorMsg(msg.message);
               }else{

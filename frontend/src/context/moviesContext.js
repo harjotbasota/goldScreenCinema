@@ -5,6 +5,7 @@ import cinemasData from '../data/cinemas.json';
 
 const MovieContext = createContext();
 const MovieProvider = ({children}) => {
+    const [accessToken, setAccessToken] = useState('');
     const [movies,setMovies] = useState([]);
     const [comingSoonMovies, setComingSoonMovies] = useState([]);
     const [cinemas, setCinemas] = useState([]);

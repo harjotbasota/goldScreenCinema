@@ -3,6 +3,8 @@ const app = express();
 const bodyparser = require('body-parser');
 const cors = require('cors');
 const authRouter = require('./Routes/authRouter');
+const cookieParser = require('cookie-parser');
+
 require('dotenv').config();
 require('./Models/db');
 
@@ -13,6 +15,7 @@ app.get('/',(req,res)=>{
     console.log(message);
     res.send({'Your Req': message});
 });
+app.use(cookieParser);
 app.use(bodyparser.json());
 app.use(cors());
 app.use('/auth',authRouter);

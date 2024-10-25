@@ -163,7 +163,7 @@ const Header = () => {
             <Button onClick={handleLocationChange}> <Location /> <span> {cinemaLocation} </span> <Switch /> </Button>
         </div>
         <div className='profile' style={displayProfileIcon ? {} : {display: 'none'}}>
-            <Button onClick={()=>navigate('/signUp')}> <Profile />  <span> Profile </span>  </Button>
+            <Button onClick={()=>navigate('/profile')}> <Profile />  <span> Profile </span>  </Button>
         </div>
       </div>
 
