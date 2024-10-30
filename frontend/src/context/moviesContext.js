@@ -32,7 +32,7 @@ const MovieProvider = ({children}) => {
     return(
         <MovieContext.Provider value={{movies,setMovies,comingSoonMovies,setComingSoonMovies,cinemas,cinemasData,userName,userEmail
         ,cinemaLocation,setCinemaLocation,setUserName,setUserEmail,selectedMovie, setSelectedMovie,selectedCinema, setSelectedCinema
-        ,selectedDate,setSelectedDate,selectedShowTime,setSelectedShowTime}}>
+        ,selectedDate,setSelectedDate,selectedShowTime,setSelectedShowTime,accessToken, setAccessToken}}>
             {children}
         </MovieContext.Provider>
     )

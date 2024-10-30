@@ -39,6 +39,7 @@ const signUpUserController = async (req,res)=>{
         }
     }catch(err){
         res.status(400).json({'message':'Something Went Wrong. Try Again Later!!!'});
+        console.log(err);
     }
 }
 
