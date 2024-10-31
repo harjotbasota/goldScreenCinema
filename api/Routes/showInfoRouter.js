@@ -1,7 +1,7 @@
+const showsController = require('../Controllers/showsController');
 const router = require('express').Router();
 
-router.get('/myshow',()=>{
-    console.log('for show booked seats');
-})
+router.get('/bookedTickets',showsController.bookedTicketsController);
+router.post('/bookTickets',showsController.bookTicketController);
 
 module.exports = router;

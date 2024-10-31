@@ -19,6 +19,7 @@ const Profile = () => {
   return (
     <div style={{marginTop:'8vh'}}>
       {userProfile}
+      <br></br>Access Token: {accessToken}
     </div>
   )
 }

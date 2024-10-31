@@ -7,7 +7,7 @@ const BookTicket = () => {
     const currentDate = new Date();
     const monthList = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const {selectedMovie, setSelectedMovie,movies,cinemas,selectedCinema, setSelectedCinema
-    ,selectedDate,setSelectedDate,setSelectedShowTime,selectedShowTime} = useContext(MovieContext);
+    ,selectedDate,setSelectedDate,setSelectedShowTime,selectedShowTime,accessToken,setAccessToken} = useContext(MovieContext);
 
     const showDates = [];
     let seats = [];
@@ -15,22 +15,39 @@ const BookTicket = () => {
         movie : selectedMovie,
         cinema : selectedCinema,
         date : selectedDate,
-        showTime : selectedShowTime
+        showTime : selectedShowTime,
+        seats: []
     });
     console.log('Ticket Details: ',ticketDetails);
     const rowsInCinema = ['A','B','C','D','E','F','G','H','I','J','K','L'];
     const seatsInRow = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
-    const bookedSeats = ['A1','A2'];
+    const [bookedSeats,setBookedSeats] = useState([]);
     const [selectedSeats,setSelectedSeats] = useState([]);
     const [displayTicketBookingResponse, setDisplayTicketBookingResponse]= useState(false);
 
+    const fetchBookedTickets = async ()=>{
+        const response = await fetch('http://localhost:4000/show/bookedTickets');
+        const bookedTickets = await response.json();
+        console.log("Booked Tickets :",bookedTickets.message);
+        setBookedSeats(bookedTickets.message);
+    }
 
+    const handleTicketBooking = async ()=>{
+        setDisplayTicketBookingResponse(false);
+        const response = await fetch('http://localhost:4000/show/bookTickets',{
+            headers: {'Content-Type':'application/json'},
+            method: 'POST',
+            body: JSON.stringify(ticketDetails)
+        });
+        
+    }
     const handleSelectedMovie = (e)=>{
         setSelectedMovie(parseInt(e.target.value));
         console.log('handle selected movie');
         setSelectedCinema(Object.keys(movies[e.target.value].cinema_shows)[0]);
         setSelectedShowTime(Object.values(movies[e.target.value].cinema_shows)[0][0]);
         setSelectedSeats([]);
+        fetchBookedTickets();
     }
     const handleSelectedCinema = (e) =>{
         setSelectedCinema(e.target.value);
@@ -39,12 +56,10 @@ const BookTicket = () => {
         if (showTimes && showTimes.length > 0) {
           setSelectedShowTime(showTimes[0]);
         }
-        console.log('handleselectedcinema ')
     }
     const handleSelectedTime = (e) =>{
         setSelectedShowTime(e.target.value);
         setSelectedSeats([]);
-        console.log('handle selected time')
     }
     const handleSelectedDate = (e) =>{
         setSelectedDate(e.target.value);
@@ -65,9 +80,14 @@ const BookTicket = () => {
             movie : selectedMovie,
             cinema : selectedCinema,
             date : selectedDate,
-            showTime : selectedShowTime
+            showTime : selectedShowTime,
+            seats: selectedSeats
         })
-    },[selectedMovie,selectedCinema,selectedDate,selectedShowTime])
+    },[selectedMovie,selectedCinema,selectedDate,selectedShowTime,selectedSeats])
+
+    useEffect(()=>{
+        fetchBookedTickets();
+    },[])
 
     for(let i=0;i<10;i++){
         const date = `${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`    
@@ -194,8 +214,9 @@ const BookTicket = () => {
         </div>
         <div className='ticketBookingResponse' onClick={()=>setDisplayTicketBookingResponse(false)} style={displayTicketBookingResponse?{display:'flex'}:{display:'none'}}>
             <div className='confirmationPrompt'>
-                confirmationPrompt here
-                <button onClick={()=>setDisplayTicketBookingResponse(false)}>confirm</button>
+                <p> Select Confirm to book ticket(s) or cancel to make changes</p>
+                <button onClick={handleTicketBooking}>Confirm</button>
+                <button onClick={()=>setDisplayTicketBookingResponse(false)}>Cancel</button>
             </div>
         </div>
     </div>

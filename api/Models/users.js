@@ -15,6 +15,33 @@ const userSchema = new schema({
     password:{
         type: String,
         required: true
+    },
+    bookedShows:{
+        type: [
+            {
+                movieID:{
+                    type: Number,
+                    required: true
+                },
+                cinemaID:{
+                    type: Number,
+                    required: true
+                },
+                showDate:{
+                    type: String,
+                    required: true
+                },
+                showTime:{
+                    type: String,
+                    required: true
+                },
+                ticketNumbers:{
+                    type: [],
+                    required: true
+                }
+            }
+        ],
+        default: []     
     }
 })
 

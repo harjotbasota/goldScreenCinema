@@ -31,8 +31,8 @@ const Login = () => {
               }else{
                 setSuccessMsg('You are now logged in');
                 setTimeout(()=>{
-                    console.log('navigate to root');
-                },1300)
+                    navigate('/profile');
+                },1000)
               }
             }catch(err){
               setErrorMsg('Failed to Login.Try again');             
