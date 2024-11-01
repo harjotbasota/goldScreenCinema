@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
-const TicketsSchema = new schema({
+const TicketSchema = new schema({
     movieID:{
         type:Number,
         required: true
@@ -18,11 +18,11 @@ const TicketsSchema = new schema({
         required:true,
         type: String
     },
-    bookedTickets:{
+    bookedSeats:{
         type:[],
         required: true,
     }
 })
 
-const TicketsModel = mongoose.model('Tickets',TicketsSchema);
-module.exports = TicketsModel;
+const TicketModel = mongoose.model('Ticket',TicketSchema);
+module.exports = TicketModel;

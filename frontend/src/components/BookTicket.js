@@ -18,28 +18,46 @@ const BookTicket = () => {
         showTime : selectedShowTime,
         seats: []
     });
-    console.log('Ticket Details: ',ticketDetails);
     const rowsInCinema = ['A','B','C','D','E','F','G','H','I','J','K','L'];
     const seatsInRow = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
     const [bookedSeats,setBookedSeats] = useState([]);
     const [selectedSeats,setSelectedSeats] = useState([]);
     const [displayTicketBookingResponse, setDisplayTicketBookingResponse]= useState(false);
+    const [displayTicketBookedPrompt,setDisplayTicketBookedPrompt] = useState(false);
+    const [serverResponse, setServerResponse] = useState('');
 
     const fetchBookedTickets = async ()=>{
-        const response = await fetch('http://localhost:4000/show/bookedTickets');
+        try{
+        console.log('Fetching booked tickets');
+        const response = await fetch(`http://localhost:4000/show/bookedTickets?movieID=${ticketDetails.movie}
+        &cinemaID=${parseInt(ticketDetails.cinema)}&showDate=${ticketDetails.date}&showTime=${ticketDetails.showTime}`);
         const bookedTickets = await response.json();
-        console.log("Booked Tickets :",bookedTickets.message);
-        setBookedSeats(bookedTickets.message);
+        console.log("Booked Tickets :",bookedTickets.seats);
+        setBookedSeats(bookedTickets.seats);
+        }catch(err){
+            console.log(err);
+        }
     }
 
     const handleTicketBooking = async ()=>{
         setDisplayTicketBookingResponse(false);
-        const response = await fetch('http://localhost:4000/show/bookTickets',{
-            headers: {'Content-Type':'application/json'},
+        const response = await fetch('http://localhost:4000/user/bookTickets',{
+            headers: {'Content-Type':'application/json','Authorization': `Bearer ${accessToken}`},
             method: 'POST',
-            body: JSON.stringify(ticketDetails)
+            body: JSON.stringify(ticketDetails),
+            credentials:'include'
         });
-        
+        if(response.status == 200){
+            fetchBookedTickets();
+            setSelectedSeats([]);
+            console.log('headers ==>',response.headers.get('Authorization'));
+            if(response.headers.get('Authorization')){
+                setAccessToken(response.headers.get('Authorization').split(' ')[1])
+            }
+        }
+        const responseJSON = await response.json();
+        setServerResponse(responseJSON.message); 
+        setDisplayTicketBookedPrompt(true);       
     }
     const handleSelectedMovie = (e)=>{
         setSelectedMovie(parseInt(e.target.value));
@@ -47,7 +65,6 @@ const BookTicket = () => {
         setSelectedCinema(Object.keys(movies[e.target.value].cinema_shows)[0]);
         setSelectedShowTime(Object.values(movies[e.target.value].cinema_shows)[0][0]);
         setSelectedSeats([]);
-        fetchBookedTickets();
     }
     const handleSelectedCinema = (e) =>{
         setSelectedCinema(e.target.value);
@@ -87,7 +104,7 @@ const BookTicket = () => {
 
     useEffect(()=>{
         fetchBookedTickets();
-    },[])
+    },[ticketDetails])
 
     for(let i=0;i<10;i++){
         const date = `${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`    
@@ -217,6 +234,12 @@ const BookTicket = () => {
                 <p> Select Confirm to book ticket(s) or cancel to make changes</p>
                 <button onClick={handleTicketBooking}>Confirm</button>
                 <button onClick={()=>setDisplayTicketBookingResponse(false)}>Cancel</button>
+            </div>
+        </div>
+        <div className='ticketBookedPrompt' style={displayTicketBookedPrompt?{display:'flex'}:{display:'none'}}>
+            <div className='finalStatusPrompt'>
+                <p> {serverResponse} </p>
+                <button onClick={()=>setDisplayTicketBookedPrompt(false)}>OK </button>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ const app = express();
 const bodyparser = require('body-parser');
 const cors = require('cors');
 const authRouter = require('./Routes/authRouter');
-const privatePageRouter = require('./Routes/privatePageRouter');
+const privateAPIs = require('./Routes/privateAPIs');
 const showInfoRouter = require('./Routes/showInfoRouter');
 const cookieParser = require('cookie-parser');
 
@@ -21,10 +21,11 @@ app.use(cookieParser());
 app.use(bodyparser.json());
 app.use(cors({
     origin:'http://localhost:3000',
-    credentials: true
+    credentials: true,
+    exposedHeaders: ['Authorization']
 }));
 app.use('/auth',authRouter);
-app.use('/user',privatePageRouter);
+app.use('/user',privateAPIs);
 app.use('/show',showInfoRouter);
 
 app.listen(PORT,()=>{
