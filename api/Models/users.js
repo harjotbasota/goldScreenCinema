@@ -35,7 +35,7 @@ const userSchema = new schema({
                     type: String,
                     required: true
                 },
-                ticketNumbers:{
+                bookedSeats:{
                     type: [],
                     required: true
                 }

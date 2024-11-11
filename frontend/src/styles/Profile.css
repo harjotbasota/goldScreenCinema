@@ -1,0 +1,65 @@
+.profilePage{
+    margin-top: 7.5vh;
+    height: auto;
+    width: 100%;
+}
+.userInfoContainer{
+    background-color: var(--cream-color);
+    min-height: 7vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    row-gap: 15px;
+}
+.userInfoContainer button{
+    background-color: #FF6347;
+    border-radius: 7px;
+    border: none;
+    padding: 12px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.bookedShowsContainer{
+    min-height: 75.5vh;
+    height: auto;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.bookedShows{
+    border: 1px solid black;
+    height: 200px;
+    min-width: 350px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    border-radius: 3px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #2a4247;
+}
+.bookedShows h1{
+    padding-top: 7px;
+    color: gold;
+    align-self: center;
+}
+.bookedShows h2{
+    color: #2a4247;
+    background-color: white;
+    text-align: center;
+    width: 100%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.bookedShows p{
+    margin-top: 5px;
+}
+@media only screen and (max-width: 650px){
+    .bookedShows{
+        min-width: 300px;
+    }
+}

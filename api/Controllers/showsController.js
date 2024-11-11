@@ -35,8 +35,7 @@ const bookTicketController = async (req,res) =>{
             await Ticket.create(bookTicket);
         }
         const user = await User.findOne({username:req.user});
-        console.log(user);
-        user.bookedShows = [...user.bookedShows,bookTicket]
+        user.bookedShows = [...user.bookedShows,bookTicket];
         user.save()
         res.status(200).json({message:'Your ticket has been booked'});
     }catch(err){

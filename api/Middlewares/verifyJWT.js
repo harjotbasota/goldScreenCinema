@@ -25,7 +25,7 @@ const regenrateAccessToken = (req)=>{
 }
 
 const verifyJWT = async (req,res,next)=>{
-    const accessToken = req.headers['authorization'].split(' ')[1] || '';
+    const accessToken = req.headers['authorization']?.split(' ')[1] || '';
     if(accessToken){
         try{
             const payload = jwt.verify(accessToken,process.env.JWT_SECRET_ACCESS_KEY);

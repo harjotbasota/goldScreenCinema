@@ -240,6 +240,10 @@
         height: 100%;
         width: 20%;
     }
+    .confirmationPrompt , .finalStatusPrompt{
+        height: 20%;
+        width: 50%;
+    }
 
 }
 @media only screen and (max-width:550px){
@@ -268,5 +272,9 @@
         width: 11.3px;
         border-radius: 2px;
         font-size: xx-small;
+    }
+    .confirmationPrompt , .finalStatusPrompt{
+        height: 25%;
+        width: 80%;
     }
 }
