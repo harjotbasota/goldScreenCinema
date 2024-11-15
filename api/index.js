@@ -17,13 +17,13 @@ app.get('/',(req,res)=>{
     console.log(message);
     res.send({'Your Req': message});
 });
-app.use(cookieParser());
-app.use(bodyparser.json());
 app.use(cors({
     origin:'http://localhost:3000',
     credentials: true,
     exposedHeaders: ['Authorization']
 }));
+app.use(cookieParser());
+app.use(bodyparser.json());
 app.use('/auth',authRouter);
 app.use('/user',privateAPIs);
 app.use('/show',showInfoRouter);

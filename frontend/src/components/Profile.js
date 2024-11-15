@@ -8,12 +8,10 @@ const Profile = () => {
   const {accessToken, setAccessToken,movies,cinemas} = useContext(MovieContext);
   const [userProfile, setUserProfile] = useState({});
   const navigate = useNavigate();
-  console.log('movies: ',movies);
-  console.log('cinemas: ',cinemas);
 
   const fetchProfileInfo = async ()=>{
     try{
-      const response = await fetch('http://192.168.2.38:4000/user/profile',{
+      const response = await fetch('http://localhost:4000/user/profile',{
         headers:{'Content-Type':'application/json','Authorization': `Bearer ${accessToken}`},
         method:'GET',
         credentials:'include'
@@ -33,6 +31,26 @@ const Profile = () => {
     }
   }
 
+  const logOutUser = async ()=>{
+    console.log('log out button clicked');
+     try{
+          const response = await fetch('http://localhost:4000/auth/logout',{
+              headers: {'Content-Type':'application/json','Authorization': `Bearer ${accessToken}`},
+              method:'POST',
+              credentials:'include'
+          });
+          console.log("response status",response);
+          if(response.status == 204){
+              setAccessToken('');
+              navigate('/');
+          }else{
+              console.log('failed to logout');
+          }
+     }catch(err){
+        console.log(err);
+     }
+  }
+
   useEffect(()=>{
     fetchProfileInfo();
     console.log('intial user profile:',userProfile);
@@ -41,12 +59,12 @@ const Profile = () => {
   
   return (
     Object.keys(userProfile).length == 0 || movies == undefined || cinemas == undefined ? 
-      <div className='profilePage'>loading...</div> :
+      <div className='profilePage' style={{height:'82.5vh',fontSize:'40px'}}>loading...</div> :
 
         <div className='profilePage'>
           <div className='userInfoContainer'>
               <h1>Welcome, {userProfile.username} </h1>
-              <button>Logout</button>
+              <button onClick={()=>logOutUser()}>Logout</button>
           </div>
           <div className='bookedShowsContainer'>
               { userProfile.bookedShows.length == 0 ? 

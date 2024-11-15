@@ -7,7 +7,7 @@ const generateAcessToken = (user)=>{
         username : user.username,
         email : user.email
     }
-    return jwt.sign(payload,process.env.JWT_SECRET_ACCESS_KEY,{expiresIn:'15m'});
+    return jwt.sign(payload,process.env.JWT_SECRET_ACCESS_KEY,{expiresIn:'5s'});
 }
 
 const generateRefreshToken = (user)=>{
@@ -46,7 +46,7 @@ const signUpUserController = async (req,res)=>{
 const logInUserController = async (req,res)=>{
     try{
         console.log(req.body);
-        const validUser = await User.findOne({email:req.body.email});      
+        let validUser = await User.findOne({email:req.body.email});      
         if(validUser){
             const validPassword = await bcrypt.compare(req.body.password,validUser.password);
             if(validPassword){
@@ -56,8 +56,10 @@ const logInUserController = async (req,res)=>{
                     httpOnly: true,
                     maxAge: 7 * 24 * 60 * 60 * 1000,
                     secure: false,
-                    sameSite: 'Strict'
-                }) 
+                    sameSite: 'lax'
+                })
+                validUser.refreshToken = refreshToken;
+                validUser.save(); 
                 res.status(200).json({'message':'Login Successful','Access_Token':accessToken});
             }else{
                 res.status(401).json({'message': 'Invalid Password'});
@@ -70,7 +72,21 @@ const logInUserController = async (req,res)=>{
     }
 }
 
+const logOutUserController = async (req,res)=>{
+    try{
+        
+        const refreshToken = req.cookies.refreshToken;
+        const payload = jwt.verify(refreshToken,process.env.JWT_REFRESH_TOKEN_SECRET);
+        const validUser = await User.findOne({username:payload.username, email:payload.email});
+        validUser.refreshToken ='';
+        validUser.save();
+        res.status(204).send();
+    }catch(err){
+        console.log('Failed to log out error:',err);
+    }
+}
 
 
 
-module.exports = {signUpUserController,logInUserController};
+
+module.exports = {signUpUserController,logInUserController,logOutUserController};

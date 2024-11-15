@@ -16,6 +16,10 @@ const userSchema = new schema({
         type: String,
         required: true
     },
+    refreshToken:{
+        type:String,
+        default:''
+    },
     bookedShows:{
         type: [
             {

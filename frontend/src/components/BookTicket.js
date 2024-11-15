@@ -41,7 +41,7 @@ const BookTicket = () => {
 
     const handleTicketBooking = async ()=>{
         setDisplayTicketBookingResponse(false);
-        const response = await fetch('http://192.168.2.38:4000/user/bookTickets',{
+        const response = await fetch('http://localhost:4000/user/bookTickets',{
             headers: {'Content-Type':'application/json','Authorization': `Bearer ${accessToken}`},
             method: 'POST',
             body: JSON.stringify(ticketDetails),

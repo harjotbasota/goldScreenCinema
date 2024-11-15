@@ -1,17 +1,17 @@
 const jwt = require('jsonwebtoken');
-const User = require('../Models/users')
+const User = require('../Models/users');
 
-const regenrateAccessToken = (req)=>{
+const regenrateAccessToken = async (req)=>{
     const refreshToken = req.cookies.refreshToken;
     if(refreshToken){
         try{
             const payload = jwt.verify(refreshToken,process.env.JWT_REFRESH_TOKEN_SECRET);
-            const validUser = User.findOne({username:payload.username,email:payload.email});
-            if(validUser){
+            const validUser = await User.findOne({username:payload.username,email:payload.email});
+            if(validUser && validUser.refreshToken == refreshToken){
                 req.user = payload.username;
                 return jwt.sign({username:payload.username,email:payload.email},
                     process.env.JWT_SECRET_ACCESS_KEY,
-                    {expiresIn:'15m'})
+                    {expiresIn:'5s'})
             }else{
                 return null
             }
@@ -25,6 +25,7 @@ const regenrateAccessToken = (req)=>{
 }
 
 const verifyJWT = async (req,res,next)=>{
+    console.log('verify jwt invoked');
     const accessToken = req.headers['authorization']?.split(' ')[1] || '';
     if(accessToken){
         try{
@@ -39,7 +40,7 @@ const verifyJWT = async (req,res,next)=>{
         }catch(err){
             if(err.name ==  'TokenExpiredError'){
                 try{
-                    const newAccessToken = regenrateAccessToken(req);
+                    const newAccessToken = await regenrateAccessToken(req);
                     if(newAccessToken){
                         res.setHeader('Authorization', `Bearer ${newAccessToken}`);
                         return next();

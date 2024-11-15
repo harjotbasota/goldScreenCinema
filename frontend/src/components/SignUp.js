@@ -25,7 +25,7 @@ const SignUp = () => {
           setErrorMsg('');
           setSuccessMsg('');
             try{
-              const res = await fetch('http://192.168.2.38:4000/auth/signup',{
+              const res = await fetch('http://localhost:4000/auth/signup',{
                 headers: { 'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify(signUpDetail)
