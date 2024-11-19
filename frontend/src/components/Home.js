@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className='home'>
           { movies.map((mymovie)=> mymovie.id == randomNumber ? 
-          <div className='slide' style={{ background: `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(${mymovie.poster})` , backgroundRepeat:'no-repeat' , backgroundSize:'cover' }}>
+          <div key={`${mymovie.id}`} className='slide' style={{ background: `linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(${mymovie.poster})` , backgroundRepeat:'no-repeat' , backgroundSize:'cover' }}>
             <div className='leftSideOfSlide'>
               <div className='posterTitle'> <p> {mymovie.title} </p></div>
               <div className='posterDescription'> <p>Description: {mymovie.description}</p> </div>
@@ -64,8 +64,8 @@ const Home = () => {
               <p>Rating: {movie.rating}</p>
             </div>
             <div className='buttonColumn'>
-              <Button onClick={()=>handleBookTicketButtonClick(movie.id)} >Book Ticket</Button>
-              <Button onClick={()=>navigate(`/${movie.title}/details`, {state: {movie} })}> <InfoIcon /> </Button>  
+              <Button aria-label={`Book Ticket ${movie.title}`} onClick={()=>handleBookTicketButtonClick(movie.id)} >Book Ticket</Button>
+              <Button aria-label={`Info about ${movie.title}`} onClick={()=>navigate(`/${movie.title}/details`, {state: {movie} })}> <InfoIcon /> </Button>  
             </div>
           </div>
         )) }
@@ -87,7 +87,7 @@ const Home = () => {
                     <p>Release Date: {comingSoonMovie.release_date} </p>
                   </div>
                   <div className='buttonColumn'>
-                    <Button onClick={()=>navigate(`/comingSoon/${comingSoonMovie.title}/details`, {state: {comingSoonMovie} })}> View Details </Button>  
+                    <Button aria-label={`Coming Soon ${comingSoonMovie.title}`} onClick={()=>navigate(`/comingSoon/${comingSoonMovie.title}/details`, {state: {comingSoonMovie} })}> View Details </Button>  
             </div>                  
             </div>
           ))}

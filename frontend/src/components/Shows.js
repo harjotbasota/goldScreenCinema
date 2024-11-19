@@ -25,7 +25,7 @@ const Shows = () => {
   }
   for(let i=0;i<10;i++){
     const date = `${currentDate.getDate()}-${monthList[currentDate.getMonth()]}-${currentDate.getFullYear()}`    
-    showDates.push(<li key={currentDate} >
+    showDates.push(<li key={`${date}-${i}`} >
       <div className={`dateButtons ${activeButton === i ? 'active' : ''}`}  
       onClick={()=>{setActiveButton(i); setSelectedDate(date); }}>
             <p className='dateText'>{currentDate.getDate()} </p>
@@ -37,7 +37,7 @@ const Shows = () => {
 
 
   return (
-    <div className='shows'>
+    <div className='shows' key="this is ss">
       <div className='showsTitle'> <p>Show Timings</p></div>
       <ul className='showDateContainer'>
         {showDates}
@@ -46,7 +46,7 @@ const Shows = () => {
       <div className='showsContainer'>
           {
             movies.map((movie)=>(
-              <div className='movieShow'>
+              <div key={movie.id} className='movieShow'>
                 <div className='movieShowLeft'>
                   <p>{movie.title}</p>
                   <p>Ratings: {movie.rating} , Genre: {movie.genre}</p>
@@ -67,7 +67,7 @@ const Shows = () => {
                              <p>{cinema.name} </p>
                              <div className='showTimingButtons'>
                               {Object.values(movie.cinema_shows[id]).map((show)=>(
-                              <button onClick={(e)=>{handleTimeButtonClick(e,movie.id,cinema.id,show)}}>{show}</button>                              
+                              <button key={`${movie.cinema_shows[id]}+${show}`} onClick={(e)=>{handleTimeButtonClick(e,movie.id,cinema.id,show)}}>{show}</button>                              
                               ))}
                               </div>
                            </div> 

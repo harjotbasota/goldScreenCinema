@@ -67,18 +67,15 @@ const Header = () => {
   const handleDisplayMenuContent = () =>{
     setDisplayMenuContent(true);
     setDisplayMenuIcon(false);
-    setDisplaySearchIcon(false);
-    console.log('handle display invoked');
+    setDisplaySearchIcon(false);;
   }
   const handleHideMenuContent = () =>{
     setDisplayMenuContent(false);
     setDisplayMenuIcon(true);
     setDisplaySearchIcon(true);
-    console.log('handlehide invoked');
   }
   
   const handleSearch = (e)=>{
-    console.log(e.target.value);
     setDisplaySearchResult(true);
     const filteredMovies = movies.filter((movie)=>{
       return movie.title.toLowerCase().includes(e.target.value.toLowerCase());
@@ -93,7 +90,6 @@ const Header = () => {
   }
 
   const handleSearchResultClick = (searchResult) =>{
-    console.log(searchResult);
     setDisplaySearchResult(false);
     if(searchResult.title){
       if(searchResult.ticketPrice){
@@ -151,8 +147,8 @@ const Header = () => {
           <ul>
           { searchResults.length != 0 ?
             searchResults.map((result)=>(
-              <li onClick={()=>handleSearchResultClick(result)}>
-                { result.title? result.title : result.name+' ,'+result.location}
+              <li key={`${searchResults.id}+${searchResults.name}`} onClick={()=>handleSearchResultClick(result)}>
+                { result.title? result.title : result.name+' ,'+result.location}                
               </li>
             )) : searchInputRef.current.value == ''?<li style={{color:'blue'}}> Start Searching...</li>: <li style={{color:'red'}}> No Match found </li>
           }

@@ -175,17 +175,18 @@ const BookTicket = () => {
                 <img src='/images/Other/cinemaScreen.svg' />
                 <div className='screenTitle'> Screen</div>
                 <table>
+                    <tbody>
                     {
                         rowsInCinema.map((row)=>{
                             return <tr key={row} className='cinemaRows'> 
                                 <td className='rowName'> {row} </td>
                                 {seatsInRow.map((seatnum)=>{
                                     if(seatnum==12){
-                                        return <>
+                                        return <React.Fragment key={`${row}${seatnum}-spacing`}>
                                         <td className={`${row}-spacing`} style={{width:'10px'}}></td>
                                         <td className={`seatName ${selectedSeats.includes(`${row}${seatnum}`)? 'selectedSeat':''} ${bookedSeats.includes(`${row}${seatnum}`)? 'bookedSeat':''}`}
                                         key={`${row}${seatnum}`} value={`${row}${seatnum}`} onClick={handleSeatClick}>{seatnum}</td>
-                                        </>
+                                        </React.Fragment>
                                     }else{
                                     return <td className={`seatName ${selectedSeats.includes(`${row}${seatnum}`)? 'selectedSeat':''} ${bookedSeats.includes(`${row}${seatnum}`)? 'bookedSeat':''}`}
                                     key={`${row}${seatnum}`}  value={`${row}${seatnum}`} onClick={handleSeatClick}>{seatnum}</td>
@@ -194,6 +195,7 @@ const BookTicket = () => {
                             </tr>
                         })
                     }
+                    </tbody>
                 </table>
             </div>
             <div className='bookingSummary'>
