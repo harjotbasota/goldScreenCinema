@@ -60,10 +60,12 @@ describe("Testing the header",()=>{
             {link:'About Us',path:'/about'},
             {link:'Profile',path:'/profile'}
         ]
-        navLinks.forEach(({link,path})=>{
+        navLinks.forEach(async ({link,path})=>{
             const navLink = within(headerContainer).getAllByText(link);
             for(let i=0;i<navLink.length;i++){
-                userEvent.click(navLink[i]);
+                await act(async()=>{
+                    await userEvent.click(navLink[i]);
+                })                
             }
             expect(window.location.pathname).toBe(path);
         })

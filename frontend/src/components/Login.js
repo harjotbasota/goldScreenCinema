@@ -12,6 +12,7 @@ const Login = () => {
 
     const handleLoginFormSubmission = async (e,guestLogin)=>{
         e.preventDefault();
+        console.log('login form submission');
         if(!guestLogin && (loginDetail.email.length <=2 || loginDetail.password.length <=5)){
           setErrorMsg('Enter valid credentails');
         }else{
@@ -57,8 +58,8 @@ const Login = () => {
         <input type='password' name='password' placeholder='********' onChange={handlePasswordInput}></input>
         { errMsg? <p style={{color: 'red'}}> {errMsg}  </p> : null}
        
-        <button className='submitButton' onClick={(e)=>handleLoginFormSubmission(e,false)}>Login</button>
-        <button className='submitButton' onClick={(e)=>handleLoginFormSubmission(e,true)}>Login As Guest</button>
+        <button aria-label='loginFormSubmit' className='submitButton' onClick={(e)=>handleLoginFormSubmission(e,false)}>Login</button>
+        <button aria-label='guestLoginFormSubmit' className='submitButton' onClick={(e)=>handleLoginFormSubmission(e,true)}>Login As Guest</button>
 
         { successMsg? <p style={{color: 'green', fontSize:'xx-large'}}> {successMsg}  </p> : null}
         <p> Don't have an account?<Link to='/signUp'>Sign Up </Link> </p>

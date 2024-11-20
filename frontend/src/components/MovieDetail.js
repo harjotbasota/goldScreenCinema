@@ -8,7 +8,6 @@ const MovieDetail = () => {
     const movie = location.state.movie;
     const cinemasdata = useContext(MovieContext);
     const {setSelectedMovie,setSelectedCinema,setSelectedShowTime } = useContext(MovieContext);
-    console.log(cinemasdata.cinemas);
     const navigate = useNavigate();
     const handleBookTicketClick =(e)=>{
       e.preventDefault();
@@ -31,7 +30,7 @@ const MovieDetail = () => {
           {
             Object.entries(movie.cinema_shows).map(([cinema,shows])=>{
                 return Object.entries(cinemasdata.cinemas).map(([cinemaid,cinemadetails])=>{
-                    return cinemaid == cinema -1 ? <div> 
+                    return cinemaid == cinema -1 ? <div key={cinemaid}> 
                         <p className='cinemaName'>{cinemadetails.name} {cinemadetails.location} </p> 
                         <p className='showsDetail'> {shows.join(' , ')} </p>                 
                         
@@ -39,7 +38,7 @@ const MovieDetail = () => {
                 })
             })
           }
-          <button className='bookTicketButton' onClick={handleBookTicketClick}> BOOK TICKET </button>
+          <button aria-label='Book Ticket Test' className='bookTicketButton' onClick={handleBookTicketClick}> BOOK TICKET </button>
       </div>
       <div className='containerRightSide'>
           <img src={movie.poster} />

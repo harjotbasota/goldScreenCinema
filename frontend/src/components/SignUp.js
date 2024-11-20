@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import '../styles/SignUp.css';
 import {Link, useNavigate} from 'react-router-dom';
 import validator from 'validator';
@@ -24,13 +24,16 @@ const SignUp = () => {
         else{
           setErrorMsg('');
           setSuccessMsg('');
+          console.log('calling the api');
             try{
               const res = await fetch('http://localhost:4000/auth/signup',{
                 headers: { 'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify(signUpDetail)
               })
+              console.log('response status :',res.ok);
               const msg = await res.json();
+
               if(!res.ok){
                 setErrorMsg(msg.message);
               }else{
@@ -40,6 +43,7 @@ const SignUp = () => {
                 },1300)
               }
             }catch(err){
+              console.log('error is invoked');
               setErrorMsg('Failed to create Account. Please try again later');             
             }
         }
@@ -75,7 +79,7 @@ const SignUp = () => {
         <input type='password' name='password2' placeholder='********' onChange={handlePasswordInput}></input>
         { errMsg? <p style={{color: 'red'}}> {errMsg}  </p> : null}
        
-        <button className='submitButton' onClick={handleSignUpFormSubmission}>SignUp</button>
+        <button aria-label='signUpSubmitButton' className='submitButton' onClick={handleSignUpFormSubmission}>SignUp</button>
         { successMsg? <p style={{color: 'green', fontSize:'xx-large'}}> {successMsg}  </p> : null}
         <p> Already have an account?<Link to='/Login'>login </Link> </p>
 

@@ -20,7 +20,6 @@ const Shows = () => {
     setSelectedMovie(movieid);
     setSelectedCinema(String(cinemaid));
     setSelectedShowTime(showTime);
-    console.log('The current cinema id :', cinemaid);
     navigate('/bookTicket');
   }
   for(let i=0;i<10;i++){
@@ -67,7 +66,7 @@ const Shows = () => {
                              <p>{cinema.name} </p>
                              <div className='showTimingButtons'>
                               {Object.values(movie.cinema_shows[id]).map((show)=>(
-                              <button key={`${movie.cinema_shows[id]}+${show}`} onClick={(e)=>{handleTimeButtonClick(e,movie.id,cinema.id,show)}}>{show}</button>                              
+                              <button aria-label='Show Time Button Test' key={`${movie.cinema_shows[id]}+${show}`} onClick={(e)=>{handleTimeButtonClick(e,movie.id,cinema.id,show)}}>{show}</button>                              
                               ))}
                               </div>
                            </div> 

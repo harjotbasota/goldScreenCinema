@@ -41,7 +41,8 @@ const BookTicket = () => {
 
     const handleTicketBooking = async ()=>{
         setDisplayTicketBookingResponse(false);
-        const response = await fetch('http://localhost:4000/user/bookTickets',{
+        try{
+            const response = await fetch('http://localhost:4000/user/bookTickets',{
             headers: {'Content-Type':'application/json','Authorization': `Bearer ${accessToken}`},
             method: 'POST',
             body: JSON.stringify(ticketDetails),
@@ -50,18 +51,20 @@ const BookTicket = () => {
         if(response.status == 200){
             fetchBookedTickets();
             setSelectedSeats([]);
-            console.log('headers ==>',response.headers.get('Authorization'));
             if(response.headers.get('Authorization')){
                 setAccessToken(response.headers.get('Authorization').split(' ')[1])
             }
         }
         const responseJSON = await response.json();
         setServerResponse(responseJSON.message); 
-        setDisplayTicketBookedPrompt(true);       
+        setDisplayTicketBookedPrompt(true);
+        }catch(err){
+            setServerResponse('Failed to book ticket. Try again later'); 
+            setDisplayTicketBookedPrompt(true);
+        }       
     }
     const handleSelectedMovie = (e)=>{
         setSelectedMovie(parseInt(e.target.value));
-        console.log('handle selected movie');
         setSelectedCinema(Object.keys(movies[e.target.value].cinema_shows)[0]);
         setSelectedShowTime(Object.values(movies[e.target.value].cinema_shows)[0][0]);
         setSelectedSeats([]);
@@ -127,7 +130,7 @@ const BookTicket = () => {
             <div className='showOptionsSelection'>
                 <form>
                     <label htmlFor='movieName'>Select Movie</label>
-                    <select defaultValue={selectedMovie} onChange={handleSelectedMovie}>
+                    <select aria-label='selectMovieName' defaultValue={selectedMovie} onChange={handleSelectedMovie}>
                         {
                             movies.map((movie)=>{
                                 return <option key={movie.id} value={movie.id}> {movie.title} </option>
@@ -135,7 +138,7 @@ const BookTicket = () => {
                         }
                     </select>
                     <label htmlFor='cinemaName'> Select Cinema </label>
-                    <select defaultValue={selectedCinema} onChange={handleSelectedCinema}>
+                    <select aria-label='selectCinemaName' defaultValue={selectedCinema} onChange={handleSelectedCinema}>
                         {
                             movies.map((movie)=>{
                                 return movie.id == selectedMovie ? 
@@ -150,13 +153,13 @@ const BookTicket = () => {
                         }
                     </select>
                     <label htmlFor='showDate'>Select Date </label>
-                    <select defaultValue={selectedDate} onChange={handleSelectedDate}>
+                    <select aria-label='selectShowDate' defaultValue={selectedDate} onChange={handleSelectedDate}>
                         {
                             showDates.map((date)=> date)
                         }
                     </select>
                     <label htmlFor='showTime'>Select Show Time </label>
-                    <select onChange={handleSelectedTime} defaultValue={selectedShowTime}>
+                    <select aria-label='selectShowTime' onChange={handleSelectedTime} defaultValue={selectedShowTime}>
                         { 
                                    movies.map((movie)=>{
                                     return movie.id == (selectedMovie || 0)? 
@@ -227,7 +230,7 @@ const BookTicket = () => {
                 <div className='proceedClass'>
                     <h4> Subtotal</h4>
                     <p> ${(selectedSeats.length * movies[selectedMovie].ticketPrice * 1.13).toFixed(2)}</p>
-                    <button onClick={()=>{setDisplayTicketBookingResponse(true)}}>Proceed</button>
+                    <button aria-label='ticketBookingProceedButton' onClick={()=>{setDisplayTicketBookingResponse(true)}}>Proceed</button>
                 </div>
             </div>
         </div>
@@ -241,7 +244,7 @@ const BookTicket = () => {
         <div className='ticketBookedPrompt' style={displayTicketBookedPrompt?{display:'flex'}:{display:'none'}}>
             <div className='finalStatusPrompt'>
                 <p> {serverResponse} </p>
-                <button onClick={()=>setDisplayTicketBookedPrompt(false)}>OK </button>
+                <button aria-label='ticketBookingConfirmPromptButton' onClick={()=>setDisplayTicketBookedPrompt(false)}>OK </button>
             </div>
         </div>
     </div>

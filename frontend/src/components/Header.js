@@ -38,7 +38,7 @@ const Header = () => {
   const [displayMenuContent, setDisplayMenuContent] = useState(false);
   const [displaySearchResults, setDisplaySearchResult] =useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const {cinemaLocation, setCinemaLocation,movies,cinemas,comingSoonMovies} = useContext(MovieContext);
+  const {cinemaLocation, setCinemaLocation,movies,cinemas,comingSoonMovies,accessToken} = useContext(MovieContext);
   const searchInputRef = useRef('');
   const searchBoxDivRef = useRef('');
   const location = useLocation();
@@ -159,7 +159,7 @@ const Header = () => {
             <Button onClick={handleLocationChange}> <Location /> <span> {cinemaLocation} </span> <Switch /> </Button>
         </div>
         <div className='profile' style={displayProfileIcon ? {} : {display: 'none'}}>
-            <Button onClick={()=>navigate('/profile')}> <Profile />  <span> Profile </span>  </Button>
+            <Button onClick={()=>navigate('/profile')}> <Profile />  <span> {accessToken? 'Profile' : 'Login'} </span>  </Button>
         </div>
       </div>
 
@@ -172,7 +172,7 @@ const Header = () => {
             <Link className='menuItem' onClick={handleHideMenuContent} to='/shows'> <ShowTime /> Shows </Link>
             <Link className='menuItem' onClick={handleHideMenuContent} to='/cinemas'> <Cinema /> Cinemas </Link>
             <Link className='menuItem' onClick={handleHideMenuContent} to='/about'> <AboutUs /> About Us </Link>
-            <Link className='menuItem' onClick={handleHideMenuContent} to='/profile'> <Profile /> Profile </Link> 
+            <Link className='menuItem' onClick={handleHideMenuContent} to='/profile'> <Profile />  {accessToken? 'Profile' : 'Login'} </Link> 
             </div> :  displayMenuIcon ? <Button  style={{marginTop:'0.75vh',color:'black'}} onClick={handleDisplayMenuContent}> <Menu/> </Button> : null
             
           }
