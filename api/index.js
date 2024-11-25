@@ -28,6 +28,6 @@ app.use('/auth',authRouter);
 app.use('/user',privateAPIs);
 app.use('/show',showInfoRouter);
 
-app.listen(PORT,()=>{
+app.listen(PORT,'0.0.0.0',()=>{
     console.log(`Server is live on port ${PORT}`);
 })

@@ -1,0 +1,28 @@
+name: goldScreenCinema
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    restart: unless-stopped
+    networks:
+      - GSC_internal
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+    
+  api:
+    container_name: api
+    build:
+      context: ./api
+    restart: unless-stopped
+    networks:
+      - GSC_internal
+    ports:
+      - "4000:4000"
+
+networks:
+  GSC_internal:
+    driver: bridge
+    
