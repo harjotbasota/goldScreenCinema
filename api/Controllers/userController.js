@@ -68,7 +68,8 @@ const logInUserController = async (req,res)=>{
             res.status(401).json({'message': 'Invalid Email'});
         }
     }catch(err){
-        res.status(400).json({'message':'FAILDED TO LOGIN!!! TRY AGAIN'})
+        res.status(400).json({'message':'FAILED TO LOGIN!!! TRY AGAIN'})
+        console.log(err);
     }
 }
 
