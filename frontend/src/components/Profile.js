@@ -11,7 +11,7 @@ const Profile = () => {
 
   const fetchProfileInfo = async ()=>{
     try{
-      const response = await fetch('http://localhost:4000/user/profile',{
+      const response = await fetch(`https://${process.env.REACT_APP_SERVER_IP}:4000/user/profile`,{
         headers:{'Content-Type':'application/json','Authorization': `Bearer ${accessToken}`},
         method:'GET',
         credentials:'include'
@@ -34,7 +34,7 @@ const Profile = () => {
   const logOutUser = async ()=>{
     console.log('log out button clicked');
      try{
-          const response = await fetch('http://localhost:4000/auth/logout',{
+          const response = await fetch(`https://${process.env.REACT_APP_SERVER_IP}:4000/auth/logout`,{
               headers: {'Content-Type':'application/json','Authorization': `Bearer ${accessToken}`},
               method:'POST',
               credentials:'include'

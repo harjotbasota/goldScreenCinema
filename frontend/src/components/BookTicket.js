@@ -29,7 +29,7 @@ const BookTicket = () => {
     const fetchBookedTickets = async ()=>{
         try{
         console.log('Fetching booked tickets');
-        const response = await fetch(`http://localhost:4000/show/bookedTickets?movieID=${ticketDetails.movie}
+        const response = await fetch(`https://${process.env.REACT_APP_SERVER_IP}:4000/show/bookedTickets?movieID=${ticketDetails.movie}
         &cinemaID=${parseInt(ticketDetails.cinema)}&showDate=${ticketDetails.date}&showTime=${ticketDetails.showTime}`);
         const bookedTickets = await response.json();
         console.log("Booked Tickets :",bookedTickets.seats);
@@ -42,7 +42,7 @@ const BookTicket = () => {
     const handleTicketBooking = async ()=>{
         setDisplayTicketBookingResponse(false);
         try{
-            const response = await fetch('http://localhost:4000/user/bookTickets',{
+            const response = await fetch(`https://${process.env.REACT_APP_SERVER_IP}:4000/user/bookTickets`,{
             headers: {'Content-Type':'application/json','Authorization': `Bearer ${accessToken}`},
             method: 'POST',
             body: JSON.stringify(ticketDetails),

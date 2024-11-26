@@ -19,7 +19,7 @@ const Login = () => {
           setErrorMsg('');
           setSuccessMsg('');
             try{
-              const res = await fetch('http://localhost:4000/auth/login',{
+              const res = await fetch(`https://${process.env.REACT_APP_SERVER_IP}:4000/auth/login`,{
                 headers: { 'Content-Type': 'application/json'},
                 method: 'POST',
                 body: guestLogin?JSON.stringify({email:'guest@email.com',password:'Guest@123'}):JSON.stringify(loginDetail),

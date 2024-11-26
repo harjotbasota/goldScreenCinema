@@ -26,7 +26,7 @@ const SignUp = () => {
           setSuccessMsg('');
           console.log('calling the api');
             try{
-              const res = await fetch('http://localhost:4000/auth/signup',{
+              const res = await fetch(`https://${process.env.REACT_APP_SERVER_IP}:4000/auth/signup`,{
                 headers: { 'Content-Type': 'application/json'},
                 method: 'POST',
                 body: JSON.stringify(signUpDetail)

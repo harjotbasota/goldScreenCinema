@@ -1,4 +1,6 @@
 /frontend/node_modules/**
 /api/node_modules/**
 /api/.env
+/api/certs/**
+/frontend/nginx/certs/**
 
