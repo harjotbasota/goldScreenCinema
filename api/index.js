@@ -13,6 +13,10 @@ require('./Models/db');
 
 const PORT = process.env.PORT || 4000;
 
+const privateKey = fs.readFileSync('./certs/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('./certs/fullchain.pem', 'utf8');
+const credentials = { key: privateKey, cert: certificate};
+
 app.get('/',(req,res)=>{
     const message = `${req.method} request on ${req.path}`
     console.log(message);
