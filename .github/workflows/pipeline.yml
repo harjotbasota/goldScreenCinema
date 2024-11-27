@@ -36,6 +36,9 @@ jobs:
           cd api
           npm ci
       - name: Running the api tests
+        env:
+          JWT_SECRET_ACCESS_KEY: 'Testjwtsecretaccessvalue'
+          JWT_REFRESH_TOKEN_SECRET: 'testjwtrefreshtokensecretvalue'
         run: |
           cd api
           npm run test 
