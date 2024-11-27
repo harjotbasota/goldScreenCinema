@@ -2,16 +2,17 @@
 
 apt update
 apt install certbot
-certbot certonly --standalone -d gsc.harjotbasota.com
-APP_DIR = $(dirname "$(realpath "$0")")
+read -p "Enter the domain name (e.g., www.google.com): " DOMAIN_NAME
+sudo certbot certonly --standalone -d "$DOMAIN_NAME"
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
-mkdir "$APP_DIR/api/certs"
-cd "$APP_DIR/api/certs"
+mkdir $SCRIPT_DIR/api/certs
+cd "./api/certs"
 cp /etc/letsencrypt/live/gsc.harjotbasota.com/privkey.pem .
 cp /etc/letsencrypt/live/gsc.harjotbasota.com/fullchain.pem .
 
-mkdir "$APP_DIR/frontend/nginx/certs"
-cd "$APP_DIR/frontend/nginx/certs"
+mkdir $SCRIPT_DIR/frontend/nginx/certs
+cd "./frontend/nginx/certs"
 cp /etc/letsencrypt/live/gsc.harjotbasota.com/privkey.pem .
 cp /etc/letsencrypt/live/gsc.harjotbasota.com/fullchain.pem .
 

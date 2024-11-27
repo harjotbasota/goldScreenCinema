@@ -1,10 +1,12 @@
-APP_DIR = $(dirname "$(realpath "$0")")
+#!/bin/bash
 
-cd "$APP_DIR/api/certs"
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
+cd $SCRIPT_DIR/api/certs
 cp /etc/letsencrypt/live/gsc.harjotbasota.com/privkey.pem .
 cp /etc/letsencrypt/live/gsc.harjotbasota.com/fullchain.pem .
 
-cd "$APP_DIR/frontend/nginx/certs"
+cd $SCRIPT_DIR/frontend/nginx/certs
 cp /etc/letsencrypt/live/gsc.harjotbasota.com/privkey.pem .
 cp /etc/letsencrypt/live/gsc.harjotbasota.com/fullchain.pem .
 

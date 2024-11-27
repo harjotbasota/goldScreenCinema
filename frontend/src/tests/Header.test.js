@@ -58,7 +58,7 @@ describe("Testing the header",()=>{
             {link:'Show Timings',path:'/shows'},
             {link:'Cinemas',path:'/cinemas'},
             {link:'About Us',path:'/about'},
-            {link:'Profile',path:'/profile'}
+            {link:'Login',path:'/profile'}
         ]
         navLinks.forEach(async ({link,path})=>{
             const navLink = within(headerContainer).getAllByText(link);
