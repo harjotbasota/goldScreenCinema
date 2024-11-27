@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  Testing:
+  Testing Frontend:
     name: Testing the frontend
     runs-on: ubuntu-latest
     container:
@@ -23,7 +23,8 @@ jobs:
           cd frontend
           npm run test 
 
-    name: Testing api
+  Testing API:
+    name: Testing the apis
     runs-on: ubuntu-latest
     container:
       image: node:23-alpine3.19
@@ -36,5 +37,6 @@ jobs:
           npm ci
       - name: Running the api tests
         run: |
-          cd api
+          cd frontend
           npm run test 
+ 
