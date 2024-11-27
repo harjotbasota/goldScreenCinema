@@ -37,6 +37,6 @@ jobs:
           npm ci
       - name: Running the api tests
         run: |
-          cd frontend
+          cd api
           npm run test 
  
