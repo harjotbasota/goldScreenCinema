@@ -4,4 +4,6 @@
 /frontend/.env
 /api/certs/**
 /frontend/nginx/certs/**
+!/api/certs/
+/frontend/nginx/certs/
 
