@@ -49,6 +49,10 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - name: Create test certs
+        run: |
+          mkdir ./frontend/nginx/certs
+          echo "this is test certs" >> testcert.txt
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Build app
