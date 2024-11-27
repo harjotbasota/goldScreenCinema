@@ -6,7 +6,7 @@ services:
       context: ./frontend
     restart: unless-stopped
     networks:
-      - GSC_internal
+      - gsc_internal
     depends_on:
       - api
     ports:
@@ -19,11 +19,11 @@ services:
       context: ./api
     restart: unless-stopped
     networks:
-      - GSC_internal
+      - gsc_internal
     ports:
       - "4000:4000"
 
 networks:
-  GSC_internal:
+  gsc_internal:
     driver: bridge
     
