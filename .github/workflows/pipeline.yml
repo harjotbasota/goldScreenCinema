@@ -42,4 +42,21 @@ jobs:
         run: |
           cd api
           npm run test 
+
+  Testing_Docker_Build:
+    name: Testing the docker build
+    runs-on: ubuntu-latest
+    services:
+      docker:
+        image: docker:latest
+        options: >-
+          --privileged
+          --network host
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Build app
+        run: docker compose up
+      - name: Remove app
+        run: docker compose down --rmi all
  
