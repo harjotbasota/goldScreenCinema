@@ -52,5 +52,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Build app
-        run: ls
+        run: docker compose -f ./docker-compose.yml up
+      - name: Remove app
+        run: docker compose -f ./docker-compose.yml down --rmi all
  
