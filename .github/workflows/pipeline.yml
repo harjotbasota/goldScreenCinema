@@ -14,11 +14,27 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      - name: Install the dependcies
+      - name: Install the frontend dependcies
         run: |
           cd frontend
           npm ci
-      - name: Install the dependcies
+      - name: Running the frontend tests
         run: |
           cd frontend
-          npm run test  
+          npm run test 
+
+    name: Testing api
+    runs-on: ubuntu-latest
+    container:
+      image: node:23-alpine3.19
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Install the api dependcies
+        run: |
+          cd api
+          npm ci
+      - name: Running the api tests
+        run: |
+          cd api
+          npm run test 
