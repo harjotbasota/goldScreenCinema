@@ -46,12 +46,6 @@ jobs:
   Testing_Docker_Build:
     name: Testing the docker build
     runs-on: ubuntu-latest
-    services:
-      docker:
-        image: docker:latest
-        options: >-
-          --privileged
-          --network host
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
