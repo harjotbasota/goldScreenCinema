@@ -75,7 +75,8 @@ jobs:
       - name: Deploy updates
         run: |
           ssh -o StrictHostKeyChecking=no -i ssh_key ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} << 'EOF'
-          ls
           cd goldScreenCinema
           git pull origin main
+          docker compose down --rmi all
+          docker compose up
           EOF
