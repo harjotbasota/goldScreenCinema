@@ -78,5 +78,5 @@ jobs:
           cd goldScreenCinema
           git pull origin main
           docker compose down --rmi all
-          docker compose up
+          docker compose up -d
           EOF
