@@ -59,4 +59,23 @@ jobs:
         run: docker compose -f ./docker-compose.yml up
       - name: Remove app
         run: docker compose -f ./docker-compose.yml down --rmi all
- 
+  
+  Deploying_On_VM:
+    name: Deploying on vm
+    runs-on: ubuntu-latest
+    needs:
+      - Testing_Docker_Build
+      - Testing_API
+      - Testing_Frontend
+    steps:
+      - name: Add SSH keys
+        run: |
+          echo "${{ secrets.VM_KEY }}" > ssh_key
+          chmod 600 ssh_key
+      - name: Deploy updates
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ssh_key ${{ secrets.VM_USERNAME }}@${{ secrets.VM_HOST }} << 'EOF'
+          ls
+          cd goldScreenCinema
+          git pull origin main
+          EOF
