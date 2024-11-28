@@ -150,4 +150,18 @@
     .cinemaAndShowContainer button{
         width: 24%;
     }
+    .showTimingButtons button{
+        white-space: nowrap;
+    }
+    .movieShowLeft p:first-of-type{
+        font-weight: 600;
+    }
+    .movieShowLeft *{
+        font-weight: 400;
+        font-size: small;
+    }
+
+    .movieShowRight p{
+        font-weight: 500;
+    }
 }
