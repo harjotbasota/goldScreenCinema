@@ -1,0 +1,3 @@
+Gold Screen Cinema is a full-stack cinema website built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. Website is responsive to multiple screen sizes. Deployed on an AWS Virtual Machine, it features a microservices-based architecture where all core services run in separate Docker containers, enhancing maintainability and resource efficiency.
+The CI/CD pipeline, powered by GitHub Actions, automates testing, building, and deployment, ensuring consistent quality and rapid feature delivery. Each deployment seamlessly integrates development and production updates for a live system.
+Live: https://goldscreencinema.harjotbasota.com
